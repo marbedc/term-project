@@ -34,10 +34,11 @@ db.run(`CREATE TABLE IF NOT EXISTS users (
 }
 );
 
-//products table
+//products table (need to save images somehow?)
 db.run(`CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
+    category TEXT NOT NULL,
     price REAL NOT NULL,
     description TEXT NOT NULL
 )`, (err) => {
@@ -49,12 +50,14 @@ db.run(`CREATE TABLE IF NOT EXISTS products (
 }
 );
 
-//orders table
+//orders table, (added order_date to group orders but may have to change the system)
 db.run(`CREATE TABLE IF NOT EXISTS orders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     product_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
+    order_date DATETIME NOT NULL,
+    featured BOOLEAN NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (product_id) REFERENCES products (id)
 )`, (err) => {
@@ -66,6 +69,33 @@ db.run(`CREATE TABLE IF NOT EXISTS orders (
 }
 );
 
+//home page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    
+    //send featured products
+    db.all("SELECT * FROM products WHERE featured == TRUE", (err, rows) => {
+        if (err) {
+            return console.error("Failed to retrieve featured products" + err.message);
+        }
+        res.json(rows);
+    });
+});
+
+
+//products page
+app.get('/products', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'products.html'));
+
+    //send all products
+    db.all("SELECT * FROM products", (err, rows) => {
+        if (err) {
+            return console.error("Failed to retrieve products" + err.message);
+        }
+        res.json(rows);
+    });
+}
+);
 
 // Start the server
 app.listen(port, () => {
