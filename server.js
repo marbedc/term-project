@@ -17,8 +17,7 @@ const db = new sqlite3.Database('store.db', (err) => {
     } else {
         console.log('Connected to the store database.');
     }
-}
-);
+});
 
 //users table
 db.run(`CREATE TABLE IF NOT EXISTS users (
@@ -31,8 +30,7 @@ db.run(`CREATE TABLE IF NOT EXISTS users (
     } else {
         console.log('Users table created or already exists.');
     }
-}
-);
+});
 
 //products table (need to save images somehow?)
 db.run(`CREATE TABLE IF NOT EXISTS products (
@@ -47,8 +45,7 @@ db.run(`CREATE TABLE IF NOT EXISTS products (
     } else {
         console.log('Products table created or already exists.');
     }
-}
-);
+});
 
 //orders table, (added order_date to group orders but may have to change the system)
 db.run(`CREATE TABLE IF NOT EXISTS orders (
@@ -66,8 +63,7 @@ db.run(`CREATE TABLE IF NOT EXISTS orders (
     } else {
         console.log('Orders table created or already exists.');
     }
-}
-);
+});
 
 //home page
 app.get('/', (req, res) => {
@@ -78,7 +74,7 @@ app.get('/', (req, res) => {
         if (err) {
             return console.error("Failed to retrieve featured products" + err.message);
         }
-        res.json(rows);
+        res.json(rows);  //doesn't work, can't do sendFile and json. Once sent res is no longer accesible.
     });
 });
 
@@ -92,10 +88,19 @@ app.get('/products', (req, res) => {
         if (err) {
             return console.error("Failed to retrieve products" + err.message);
         }
-        res.json(rows);
+        res.json(rows); //doesn't work
     });
-}
-);
+});
+
+//faq page
+app.get('/faq', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'faq.html'));
+});
+
+//about page
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'about.html'));
+});
 
 // Start the server
 app.listen(port, () => {
