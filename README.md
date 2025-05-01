@@ -1,7 +1,8 @@
-⭐ Stellar - Own Your Piece of the Universe 🌌
+# #⭐ Stellar - Own Your Piece of the Universe 🌌
 Welcome to Stellar! 🌟 Your one-stop shop for buying stars, planets, and everything celestial! 🌠 Whether you’re gifting a star to a loved one 🌙 or dreaming of owning a planet 🪐, Stellar makes it happen. Ready to explore the cosmos? Let’s dive in! 🚀
 
 📑 Table of Contents
+
 About
 
 Features
