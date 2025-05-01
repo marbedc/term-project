@@ -5,6 +5,13 @@ const sqlite3 = require("sqlite3").verbose();
 const app = express();
 const port = 3000;
 
+const accountRoute = require('./routes/account');
+const homepageRoute = require('./routes/homepage');
+const loginRoute = require('./routes/login');
+const paymentRoute = require('./routes/payment');
+const productsRoute = require('./routes/products');
+const signupRoute = require('./routes/signup');
+
 app.use(express.json());
 
 // Middleware to serve static files
@@ -65,32 +72,39 @@ db.run(`CREATE TABLE IF NOT EXISTS orders (
     }
 });
 
-//home page
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    
-    //send featured products
-    db.all("SELECT * FROM products WHERE featured == TRUE", (err, rows) => {
-        if (err) {
-            return console.error("Failed to retrieve featured products" + err.message);
-        }
-        res.json(rows);  //doesn't work, can't do sendFile and json. Once sent res is no longer accesible.
-    });
+//cart table
+db.run(`CREATE TABLE IF NOT EXISTS cart (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (product_id) REFERENCES products (id)
+)`, (err) => {
+    if (err) {
+        return console.error('Error creating cart table: ' + err.message);
+    } else {
+        console.log('Cart table created or already exists.');
+    }
 });
 
+//home page
+app.use('/', homepageRoute);
+
+//account page
+app.use('/account', accountRoute);
+
+//login page
+app.use('/login', loginRoute);
+
+//signup page
+app.use('/signup', signupRoute);
 
 //products page
-app.get('/products', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'products.html'));
+app.use('/products', productsRoute);
 
-    //send all products
-    db.all("SELECT * FROM products", (err, rows) => {
-        if (err) {
-            return console.error("Failed to retrieve products" + err.message);
-        }
-        res.json(rows); //doesn't work
-    });
-});
+//payment page
+app.use('/payment', paymentRoute);
 
 //faq page
 app.get('/faq', (req, res) => {
@@ -106,3 +120,7 @@ app.get('/about', (req, res) => {
 app.listen(port, () => {
     console.log(`Todo API server running at http://localhost:${port}`);
   });
+
+
+// Export the database connection for use in other modules
+module.exports = db;
