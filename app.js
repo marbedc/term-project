@@ -5,6 +5,10 @@ const sqlite3 = require("sqlite3").verbose();
 const app = express();
 const port = 3000;
 
+// NOTE (Zoe): Set Pug as the view engine
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 const accountRoute = require('./routes/account');
 const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
@@ -19,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //db
 const db = new sqlite3.Database('store.db', (err) => {
+// TODO (Zoe): Change line 25 to 'const db = new sqlite3.Database('./data/database.sqlite', (err) => {'
     if (err) {
         return console.error('Error opening database ' + err.message);
     } else {
