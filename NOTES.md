@@ -19,9 +19,12 @@ debug/zoe-html-css
 [ ] Rename routes:
     - account.js → users.js
     - signup.js → combine into auth.js
+[ ] Merge the two CSS files into styles.css in public/css/
+[ ] Remove test route (`/test`) before final submission
 
 ## Reminders
 - Update package.json "main" from "index.js" to "app.js" later
+- All temporary placeholder routes should be removed or replaced with real functionality before final submission
 
 ## Database Notes (Zoe)
 - Currently using: './data/database.sqlite'
@@ -36,3 +39,7 @@ debug/zoe-html-css
 - Installed Pug (`npm install pug`).
 - Added Pug view engine setup to app.js.
 - Commented out original database path (Vineela) and added new path './data/database.sqlite' (Zoe).
+- Created test.pug and added a test route (`/test`) to verify Pug rendering.
+- Updated account.js to import the database correctly from app.js.
+- Added temporary placeholder routes to homepage.js, login.js, payment.js, signup.js, and products.js to prevent Express router errors.
+- Successfully tested app startup and verified Pug works at `http://localhost:3000/test`.

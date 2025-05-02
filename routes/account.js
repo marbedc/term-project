@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const db = require('db')
+// NOTE (Vineela): Original database import (incorrect placeholder)
+// const db = require('db');
+// NOTE (Zoe): Updated to import db from app.js
+const db = require('../app');
 
 router.get('/', (req, res) => {
     // AI generated code, will test later
@@ -29,3 +32,6 @@ router.get('/', (req, res) => {
 
     res.render('account'); //also not tested
 });
+
+// NOTE (Zoe): Exporting router for Express to use
+module.exports = router;

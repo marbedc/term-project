@@ -95,6 +95,12 @@ db.run(`CREATE TABLE IF NOT EXISTS cart (
     }
 });
 
+// NOTE (Zoe): Test Route for verifying Pug rendering
+// TODO (Zoe): Remove next three lines of code before final submission
+app.get('/test', (req, res) => {
+    res.render('test');
+});
+
 //home page
 app.use('/', homepageRoute);
 
