@@ -21,9 +21,11 @@ app.use(express.json());
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// NOTE (Vineela): Original database path
 //db
-const db = new sqlite3.Database('store.db', (err) => {
-// TODO (Zoe): Change line 25 to 'const db = new sqlite3.Database('./data/database.sqlite', (err) => {'
+//const db = new sqlite3.Database('store.db', (err) => {
+// NOTE (Zoe): Updated database path to match professor's required structure
+const db = new sqlite3.Database('./data/database.sqlite', (err) => {
     if (err) {
         return console.error('Error opening database ' + err.message);
     } else {

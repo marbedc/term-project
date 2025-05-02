@@ -19,11 +19,15 @@ debug/zoe-html-css
 [ ] Rename routes:
     - account.js → users.js
     - signup.js → combine into auth.js
-[ ] Change line 25 in app.js:
-    - const db = new sqlite3.Database('./data/database.sqlite', (err) => {
 
 ## Reminders
 - Update package.json "main" from "index.js" to "app.js" later
+
+## Database Notes (Zoe)
+- Currently using: './data/database.sqlite'
+- This path follows the professor's required structure.
+- Vineela may be using a different database path in her branch.
+- Before merging branches (Week 2+), confirm the team agrees on a single shared database path.
 
 ## Work Log (Zoe)
 **2025-05-01**
@@ -31,4 +35,4 @@ debug/zoe-html-css
 - Confirmed need to reorganize files in feature branch.
 - Installed Pug (`npm install pug`).
 - Added Pug view engine setup to app.js.
-
+- Commented out original database path (Vineela) and added new path './data/database.sqlite' (Zoe).
