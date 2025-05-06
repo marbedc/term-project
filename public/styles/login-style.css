@@ -1,0 +1,177 @@
+body{
+    background-color: #5887ff;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: "Roboto Flex", sans-serif;
+    
+}
+.signin-form{
+    margin-top: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+span{
+    color: white;
+    letter-spacing: 0.3rem;
+    font-size: 25px;
+   
+}
+
+span:hover{
+    text-decoration: none;
+    background-color: #5887ff;
+    color: aliceblue;
+}
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #102e4a;
+    
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 60px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    display: inline;
+    letter-spacing: 0.2rem;
+    
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color:white;
+    font-size: 25px;
+    
+  }
+  .nav-links a:hover {
+    text-decoration: none;
+    background-color: #5887ff;
+    color: aliceblue;
+  }
+  
+  #search{
+    margin-left: 5px;
+    width: 300px;
+    height: 25px;
+    position: relative;
+    bottom: 2px;
+    border-radius: 10px;
+    padding-left: 1rem;
+  }
+
+ 
+  .form-input{
+    margin-top: 20px;
+    width: 350px;
+    height: 40px;
+    position: relative;
+    bottom: 5px;
+    border-radius: 14px;
+    border: none;
+    background-color: whitesmoke;
+    padding-left: 1rem;
+  }
+
+  .label-div{
+    display: flex;
+    gap: 160px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    
+  }
+  .label-div label{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .btn-signIn{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-signIn button{
+    width: 350px;
+    height: 40px;
+    position: relative;
+    top: 20px;
+    border-radius: 14px;
+    background-color: #102e4a;
+    color: white;
+    letter-spacing: 0.2rem;
+    font-size: 17px;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .btn-signIn label{
+    position:relative;
+    top: 30px;
+    margin-left: 75px;
+    cursor: pointer;
+  }
+
+  .btn-signIn button:hover {
+    opacity: 0.8;
+  }
+  
+  .btn-signIn button:active {
+    transform: scale(0.95);
+  }
+
+  /*MOBILE CSS*/
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 1rem;
+      gap: 68px;
+      
+    }
+
+    .title{
+      display: flex;
+      flex-direction: row;
+  }
+
+    .nav-links {
+      flex-direction: row;
+      gap: 20px;
+      width: 100%;
+  }
+
+  .nav-links a{
+    gap: 60px;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 18px;
+    
+  }
+
+  #search{
+    width: 210px;
+    position: relative;
+    bottom: 0px;
+  }
+
+  .nav-links{
+    position: relative;
+    top: 5px;
+  }
+  }
+  
