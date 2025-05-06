@@ -34,7 +34,6 @@ At Stellar, we’re all about making the universe a little bit closer to you. We
 🔐 User Accounts: Save your favorite stars and planets in your personal account for easy access anytime!
 
 # 🛠️ Technologies Used
-
 Frontend: HTML, CSS, Pug, JavaScript
 
 Backend: Node.js, Express.js
@@ -65,7 +64,6 @@ npm start
 Now visit: http://localhost:3000 in your browser to see the magic happen! ✨
 
 # 🌠 Usage
-
 Create Your Account: Sign up and log in to start your journey across the stars. 🌟
 
 Explore the Universe: Browse through our catalog of celestial objects—find the perfect star or planet for you! 🌌
