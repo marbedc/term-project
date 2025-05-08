@@ -5,17 +5,21 @@ const sqlite3 = require("sqlite3").verbose();
 const app = express();
 const port = 3000;
 
-const accountRoute = require('./routes/account');
-const homepageRoute = require('./routes/homepage');
+// const accountRoute = require('./routes/account');
+// const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
 const paymentRoute = require('./routes/payment');
-const productsRoute = require('./routes/products');
+// const productsRoute = require('./routes/products');
 const signupRoute = require('./routes/signup');
 
 app.use(express.json());
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Set the view engine to Pug
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
 //db
 const db = new sqlite3.Database('store.db', (err) => {
@@ -30,7 +34,9 @@ const db = new sqlite3.Database('store.db', (err) => {
 db.run(`CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+    first name TEXT NOT NULL,
+    last name TEXT NOT NULL
 )`, (err) => {
     if (err) {
         return console.error('Error creating users table: ' + err.message);
@@ -88,11 +94,11 @@ db.run(`CREATE TABLE IF NOT EXISTS cart (
     }
 });
 
-//home page
-app.use('/', homepageRoute);
+// //home page
+// app.use('/', homepageRoute);
 
-//account page
-app.use('/account', accountRoute);
+// //account page
+// app.use('/account', accountRoute);
 
 //login page
 app.use('/login', loginRoute);
@@ -100,8 +106,8 @@ app.use('/login', loginRoute);
 //signup page
 app.use('/signup', signupRoute);
 
-//products page
-app.use('/products', productsRoute);
+// //products page
+// app.use('/products', productsRoute);
 
 //payment page
 app.use('/payment', paymentRoute);
@@ -120,7 +126,3 @@ app.get('/about', (req, res) => {
 app.listen(port, () => {
     console.log(`Todo API server running at http://localhost:${port}`);
   });
-
-
-// Export the database connection for use in other modules
-module.exports = db;
