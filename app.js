@@ -6,11 +6,12 @@ const app = express();
 const port = 3000;
 
 // const accountRoute = require('./routes/account');
-// const homepageRoute = require('./routes/homepage');
+const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
 const paymentRoute = require('./routes/payment');
-// const productsRoute = require('./routes/products');
+const productsRoute = require('./routes/products');
 const signupRoute = require('./routes/signup');
+const cartRoute = require('./routes/cart');
 
 app.use(express.json());
 
@@ -95,7 +96,7 @@ db.run(`CREATE TABLE IF NOT EXISTS cart (
 });
 
 // //home page
-// app.use('/', homepageRoute);
+app.use('/', homepageRoute);
 
 // //account page
 // app.use('/account', accountRoute);
@@ -107,7 +108,7 @@ app.use('/login', loginRoute);
 app.use('/signup', signupRoute);
 
 // //products page
-// app.use('/products', productsRoute);
+app.use('/products', productsRoute);
 
 //payment page
 app.use('/payment', paymentRoute);
@@ -121,6 +122,9 @@ app.get('/faq', (req, res) => {
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'about.html'));
 });
+
+//cart page
+app.use('/cart', cartRoute);
 
 // Start the server
 app.listen(port, () => {
