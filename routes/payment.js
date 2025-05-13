@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../db.js');
 
 router.get('/', (req, res) => {
     
@@ -10,13 +11,15 @@ router.get('/', (req, res) => {
             return res.status(500).send('Internal Server Error');
         }
         if (!user) {
-            return res.status(404).send('User not found');
+            //return res.status(404).send('User not found');
+            res.render('payment');
+        }else{
+            res.render('payment');
         }
+        // Render the payment page
+    
     });
 
-    
-    // Render the payment page
-    res.render('payment');
 });
 
 module.exports = router;
