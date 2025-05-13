@@ -12,11 +12,10 @@ router.get('/', (req, res) => {
         }
         if (!user) {
             //return res.status(404).send('User not found');
-            res.render('payment');
+            res.render('payment'); //no users in db currently, so render payment page
         }else{
             res.render('payment');
         }
-        // Render the payment page
     
     });
 

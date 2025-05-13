@@ -5,7 +5,7 @@ const db = require('./db.js');
 const app = express();
 const port = 3000;
 
-// const accountRoute = require('./routes/account');
+const accountRoute = require('./routes/account');
 // const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
 const paymentRoute = require('./routes/payment');
@@ -42,12 +42,12 @@ app.use('/payment', paymentRoute);
 
 //faq page
 app.get('/faq', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'faq.html'));
+    res.render('faq');
 });
 
 //about page
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'about.html'));
+    res.render('about');
 });
 
 // Start the server
