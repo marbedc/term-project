@@ -11,6 +11,7 @@ const loginRoute = require('./routes/login');
 const paymentRoute = require('./routes/payment');
 // const productsRoute = require('./routes/products');
 const signupRoute = require('./routes/signup');
+const cartRoute = require('./routes/cart');
 
 app.use(express.json());
 
@@ -49,6 +50,9 @@ app.get('/faq', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about');
 });
+
+//cart page
+app.use('/cart', cartRoute);
 
 // Start the server
 app.listen(port, () => {

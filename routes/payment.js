@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db.js');
 
+const current_user = 0;
+
 router.get('/', (req, res) => {
     
     // Get the user's information from the database
-    db.get('SELECT * FROM users WHERE id = ?', [0], (err, user) => {
+    db.get('SELECT * FROM users WHERE id = ?', [current_user], (err, user) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Internal Server Error');
