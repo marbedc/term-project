@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
-const db = require('db')
+const db = require('../db.js');
 
 router.get('/', (req, res) => {
     // AI generated code, will test later
@@ -29,3 +27,5 @@ router.get('/', (req, res) => {
 
     res.render('account'); //also not tested
 });
+
+module.exports = router;
