@@ -1,0 +1,82 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='/styles/navbar-footer-style.css')
+    link(rel='stylesheet' href='/styles/home-products-style.css')
+    title Home | Stellar
+
+  body
+    .page-wrapper
+      // NAVBAR
+      include partials/navbar
+
+      main
+        // HERO SECTION
+        section.hero
+          h1 Shop Stellar Products
+          p Discover stars, planets, and more.
+
+        // SOLAR SYSTEM BANNER
+        section.solar-banner
+          img(src='/images/solar-system.webp' alt='Solar System Banner')
+
+        // SOLAR SYSTEM COLLECTION TITLE
+        h2.collection-title The Solar System Collection
+        p.collection-subtitle Own celestial bodies from our very own star system!
+
+        // PRODUCTS GRID
+        section.products-grid
+          .product-card
+            a(href='/products/1')
+              img(src='/images/mercury.webp' alt='Mercury')
+              p Mercury
+          .product-card
+            a(href='/products/2')
+              img(src='/images/venus.webp' alt='Venus')
+              p Venus
+          .product-card
+            a(href='/products/3')
+              img(src='/images/earth.avif' alt='Earth')
+              p Earth
+          .product-card
+            a(href='/products/4')
+              img(src='/images/mars.webp' alt='Mars')
+              p Mars
+          .product-card
+            a(href='/products/5')
+              img(src='/images/jupiter.webp' alt='Jupiter')
+              p Jupiter
+          .product-card
+            a(href='/products/6')
+              img(src='/images/saturn.jpg' alt='Saturn')
+              p Saturn
+          .product-card
+            a(href='/products/7')
+              img(src='/images/uranus.jpg' alt='Uranus')
+              p Uranus
+          .product-card
+            a(href='/products/8')
+              img(src='/images/neptune.webp' alt='Neptune')
+              p Neptune
+          .product-card
+            a(href='/products/9')
+              img(src='/images/pluto.avif' alt='Pluto')
+              p Pluto
+          .product-card
+            a(href='/products/10')
+              img(src='/images/sun.jpg' alt='Sun')
+              p Sun
+          .product-card
+            a(href='/products/11')
+              img(src='/images/moon.jpg' alt='Moon')
+              p Moon
+          .product-card
+            a(href='/products/12')
+              img(src='/images/io.jpg' alt="Io (Jupiter's Moon)")
+              p Io (Jupiter's Moon)
+      // FOOTER
+      include partials/footer
