@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db.js');
 
-const current_user = 0;
+const current_user = 2;
 
 router.get('/', (req, res) => {
     
@@ -13,9 +13,9 @@ router.get('/', (req, res) => {
             return res.status(500).send('Internal Server Error');
         }
         if (!user) {
-            //return res.status(404).send('User not found');
-            res.render('payment'); //no users in db currently, so render payment page
+            return res.status(404).send('User not found');
         }else{
+            console.log(user);
             res.render('payment');
         }
     
