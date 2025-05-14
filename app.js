@@ -6,10 +6,10 @@ const app = express();
 const port = 3000;
 
 const accountRoute = require('./routes/account');
-// const homepageRoute = require('./routes/homepage');
+const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
 const paymentRoute = require('./routes/payment');
-// const productsRoute = require('./routes/products');
+const productsRoute = require('./routes/products');
 const signupRoute = require('./routes/signup');
 const cartRoute = require('./routes/cart');
 
@@ -23,8 +23,8 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 
-// //home page
-// app.use('/', homepageRoute);
+//home page
+app.use('/', homepageRoute);
 
 //account page
 app.use('/account', accountRoute);
@@ -35,8 +35,8 @@ app.use('/login', loginRoute);
 //signup page
 app.use('/signup', signupRoute);
 
-// //products page
-// app.use('/products', productsRoute);
+//products page
+app.use('/products', productsRoute);
 
 //payment page
 app.use('/payment', paymentRoute);
