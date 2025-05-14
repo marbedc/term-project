@@ -10,19 +10,20 @@ html
     title Products | Stellar
 
   body
-    // NAVBAR
-    include partials/navbar
+    .page-wrapper
+      // NAVBAR
+      include partials/navbar
 
-    main
-      .product-container
-        .product-image
-          img(src='/images/mercury.webp' alt='Mercury')
-        h1 Mercury
-        p.description
-          | Mercury is the smallest planet in our solar system and closest to the Sun.
-          | A rocky world with extreme temperatures, perfect for collectors who love rare celestial bodies.
-        p.price $150
-        button.add-to-cart Add to Cart
+      main
+        .product-container
+          .product-image
+            img(src='/images/mercury.webp' alt='Mercury')
+          h1 Mercury
+          p.description
+            | Mercury is the smallest planet in our solar system and closest to the Sun.
+            | A rocky world with extreme temperatures, perfect for collectors who love rare celestial bodies.
+          p.price $150
+          button.add-to-cart Add to Cart
     
-    // FOOTER
-    include partials/footer
+      // FOOTER
+      include partials/footer
