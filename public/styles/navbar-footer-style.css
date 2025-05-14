@@ -379,7 +379,7 @@
     font-size: 14px;
 }
 
-/* -------------------- Mobile Navbar & Footer (≤ 768px & 480px) -------------------- */
+/* -------------------- Mobile Footer (≤ 768px, 480px & 360px) -------------------- */
 @media (max-width: 768px) {
     .footer {
       flex-direction: row;
@@ -432,4 +432,24 @@
       font-size: 12px;
       white-space: nowrap;
     }
-}  
+}
+
+@media (max-width: 360px) {
+    .footer {
+      gap: 6px;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .footer-links {
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+    }
+
+    .footer-right {
+      font-size: 11px;
+    }
+}
