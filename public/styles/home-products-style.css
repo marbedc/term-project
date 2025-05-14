@@ -1,65 +1,22 @@
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background-color: #715AFF;
     font-family: "Roboto Flex", sans-serif;
 }
 
-/* NAVBAR */
-span{
-    color: white;
-    letter-spacing: 0.3rem;
-    font-size: 25px;
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-span:hover{
-    text-decoration: none;
-    background-color: #5887ff;
-    color: aliceblue;
+main {
+  flex: 1;
 }
 
-.navbar {
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: #102e4a;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 60px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li {
-    display: inline;
-    letter-spacing: 0.2rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color:white;
-    font-size: 25px;
-}
-
-.nav-links a:hover {
-    text-decoration: none;
-    background-color: #5887ff;
-    color: aliceblue;
-}
-
-#search{
-    margin-left: 5px;
-    width: 300px;
-    height: 25px;
-    position: relative;
-    bottom: 2px;
-    border-radius: 10px;
-    padding-left: 1rem;
-}
+/* -------------------- HOMEPAGE -------------------- */
 
 /* HERO SECTION */
 .hero {
@@ -68,7 +25,7 @@ span:hover{
     background-color: #A682FF; /* Updated background */
     padding: 20px 0;
     border-bottom: 4px solid #7A5ACF; /* Optional for style */
-    border-radius: 20px; /* 👈 Rounded edges */
+    border-radius: 20px; /* Rounded edges */
 }
 
 .hero h1 {
@@ -142,42 +99,11 @@ span:hover{
     background-color: #345a8a;
 }
 
-/* MOBILE FRIENDLY */
+/* MOBILE FRIENDLY for homepage */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 1rem;
-        gap: 68px;
-    }
-  
       .title{
         display: flex;
         flex-direction: row;
-    }
-  
-      .nav-links {
-        flex-direction: row;
-        gap: 20px;
-        width: 100%;
-    }
-  
-      .nav-links a{
-        gap: 60px;
-        margin-bottom: 20px;
-        width: 100%;
-        font-size: 18px;
-    }
-  
-      #search{
-        width: 210px;
-        position: relative;
-        bottom: 0px;
-    }
-  
-      .nav-links{
-        position: relative;
-        top: 5px;
     }
 
     .products-grid {
@@ -186,7 +112,7 @@ span:hover{
     }
 }
 
-/* -------------------- PRODUCT DETAIL PAGE -------------------- */
+/* -------------------- PRODUCTS PAGE -------------------- */
 
 .product-container {
     max-width: 800px;
@@ -237,7 +163,7 @@ span:hover{
     background-color: #345a8a;
 }
 
-/* MOBILE FRIENDLY for product detail */
+/* MOBILE FRIENDLY for product detail*/
 @media (max-width: 768px) {
     .product-image img {
         width: 100%;
