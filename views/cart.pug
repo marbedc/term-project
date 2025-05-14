@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Cart | Stellar
+    link(rel='stylesheet' href='/styles/navbar-footer-style.css')
+    link(rel='stylesheet', href='/styles/home-products-style.css')
+  body
+    include partials/navbar
+
+    main.cart-container
+      h1 Your Cart
+
+      if cart.length
+        ul.cart-items
+          each item in cart
+            li.cart-item
+              span.item-name #{item.name}
+              span.item-quantity x #{item.quantity}
+              span.item-price $#{(item.price * item.quantity).toFixed(2)}
+        .cart-summary
+          span.total-label Total:
+          span.total-amount $#{total.toFixed(2)}
+          button.checkout-btn Checkout
+      else
+        p.empty-cart Your cart is empty.
+
+    include partials/footer
