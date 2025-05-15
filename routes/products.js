@@ -1,8 +1,25 @@
 const express = require('express');
 const router = express.Router();
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('store.db');
 
+// GET /products → optional: redirect or homepage
 router.get('/', (req, res) => {
-  res.render('products'); // matches views/products.pug
+  res.redirect('/');
+});
+
+// GET /products/:id → render product detail page
+router.get('/:id', (req, res) => {
+  const productId = req.params.id;
+  db.get('SELECT * FROM products WHERE id = ?', [productId], (err, product) => {
+    if (err) {
+      return res.status(500).send("Database error");
+    }
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+    res.render('products', { product });
+  });
 });
 
 module.exports = router;

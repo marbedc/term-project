@@ -1,15 +1,24 @@
 const express = require('express');
 const router = express.Router();
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('store.db');
 
-router.get('/', (req, res) => {
-  const cart = [
-    { name: 'Cool Mug', quantity: 2, price: 12.99 },
-    { name: 'Notebook', quantity: 1, price: 5.00 }
-  ];
+// POST /cart/add
+router.post('/add', (req, res) => {
+  const { productId } = req.body;
+  const userId = 1; // temporary hardcoded user (replace with session later)
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-  res.render('cart', { cart, total });
+  db.run(
+    `INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, 1)`,
+    [userId, productId],
+    function (err) {
+      if (err) {
+        console.error(err.message);
+        return res.status(500).send('Error adding to cart');
+      }
+      res.status(200).send('Product added to cart');
+    }
+  );
 });
 
 module.exports = router;
