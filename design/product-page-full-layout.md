@@ -1,34 +1,40 @@
-# 🛒 \[Company Name] Product Detail Page — Full Layout Breakdown (Dynamic Version)
+# 🎯 Product Detail Page — Full Layout Breakdown (Updated)
 
 ---
 
-## 🟦 Frontend (product.html — dynamic)
+## 💻 Frontend (products.pug)
 
-### 🧭 Navbar (appears on all pages)
+### ⬆️ Navbar (appears on all pages)
 
-* \[Logo/Home (clickable logo or company name)] → returns to `home.html`
+* \[Logo/Home (clickable logo or company name)] → returns to `/`
 * \[Search Bar] → centered or right-aligned
 * \[Profile] →
 
-  * If logged in → goes to `profile.html`
-  * If not logged in → goes to `login.html`
-* \[Cart Icon] → goes to `cart.html`
+  * If logged in → goes to `/profile`
+  * If not logged in → goes to `/login`
+* \[Cart Icon] →
 
-### 🖼️ Product Detail Section
+  * If logged in → goes to `/cart`
+  * If not logged in → toast: "Please sign in to access your cart" → redirects to `/login`
 
-* Displays data dynamically:
+### 🎨 Product Detail Section
 
-  * **Product Image** (from DB)
-  * **Product Title/Name** (from DB)
-  * **Product Description** (from DB)
-  * **Product Price** (from DB)
-  * \[Add to Cart] button
-* \[Back to Products] → link to `home.html`
+* Displays data dynamically from the database:
 
-### 📎 Footer
+  * **Product Image**
+  * **Product Title/Name**
+  * **Product Description**
+  * **Product Price**
+* \[Add to Cart] button:
 
-* \[About] → `about.html`
-* \[FAQ] → `faq.html`
+  * If not logged in → redirects to signup/login → auto-adds item → toast: "Item added to cart" → redirect back to product page
+  * If logged in → adds item and shows toast: "Item added to cart"
+* \[Continue Shopping] link at top-left → returns to `/`
+
+### ⬇️ Footer
+
+* \[About] → `/about`
+* \[FAQ] → `/faq`
 
 ---
 
@@ -36,36 +42,34 @@
 
 ```
 Navbar:
-[Logo/Home] → home.html | [Search Bar] → (Search product then redirect to product.html?id=PRODUCT_ID) | [Profile]
-- If logged in → profile.html
-- If not logged in → login.html
-| [Cart Icon] → cart.html
+[Logo/Home] → / | [Search Bar] → (Search then redirect to /products/:id) | [Profile]
+- If logged in → /profile
+- If not logged in → /login
+| [Cart Icon]
+- If logged in → /cart
+- If not logged in → Toast + Redirect to /login
 
 Main Content:
- [Product Detail]
-   |
-------------------------------
+ [Product Detail View]
+       |
+ ----------------------------------------
 | Image | Name | Description | Price |
-   |
+       |
  [Add to Cart Button]
-   |
- Updates cart count → cart.html
+       |
+ Add to cart logic + toast
 
- [Back to Products] → home.html
+ [Continue Shopping] → / (Homepage)
 
 Footer:
-[About] → about.html | [FAQ] → faq.html
+[About] → /about | [FAQ] → /faq
 ```
 
 ---
 
-## 🟡 JavaScript (public/js/product.js)
+## 🚫 JavaScript (public/js/products.js or inline)
 
 ### 🛒 Add to Cart Functionality
-
-*Note: A separate JavaScript site map is not necessary for the homepage due to simple, linear script behavior.*
-
-*Note: Adding to cart does not require login. Users can add items to the cart regardless of login status. Checkout will require login.*
 
 **User Flow**:
 
@@ -77,9 +81,8 @@ Footer:
 2. Send a POST request to backend `/cart/add` with the product ID.
 3. On success:
 
-   * Update the cart count/icon.
-   * Optionally show a "Product added" message (does not redirect to the cart page).
-   * User remains on the Product Page to continue browsing or adding more items.
+   * Show toast: "Item added to cart"
+   * User remains on product page (no redirect)
 
 **Example:**
 
@@ -91,8 +94,7 @@ const addToCart = (productId) => {
         body: JSON.stringify({ productId })
     }).then(res => {
         if (res.ok) {
-            // Update cart count visually or notify user
-            alert('Product added to cart!');
+            alert('Item added to cart');
         } else {
             alert('Failed to add product.');
         }
@@ -102,14 +104,14 @@ const addToCart = (productId) => {
 
 ---
 
-## 🟠 Backend (Express + SQLite)
+## 📀 Backend (Express + SQLite)
 
 | Feature                            | Route               | File        | DB Query                                                            |
 | ---------------------------------- | ------------------- | ----------- | ------------------------------------------------------------------- |
 | Serve product page                 | `GET /products/:id` | products.js | `SELECT * FROM products WHERE id = ?`                               |
 | Add to cart                        | `POST /cart/add`    | cart.js     | `INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, 1)` |
 | Session check for Profile button   | middleware          | app.js      | Checks `req.session.userId`                                         |
-| Redirect to login if not logged in | `/profile` route    | auth.js     | Redirects to `login.html`                                           |
+| Redirect to login if not logged in | `/profile` route    | auth.js     | Redirects to `/login`                                               |
 
 ---
 
@@ -118,18 +120,18 @@ const addToCart = (productId) => {
 ```
 [GET /products/:id] → products.js → SELECT * FROM products WHERE id = ?
      |
- Renders product.html with product data
+ Renders products.pug with product data
 
 [POST /cart/add] → cart.js → INSERT INTO cart (user_id, product_id, quantity)
 
 Session Check Middleware:
 - Checks req.session.userId
-- If accessing /profile without login → Redirect to login.html
+- If accessing /profile without login → Redirect to /login
 ```
 
 ---
 
-## 🔒 Session/Cookie Behavior
+## 🔐 Session/Cookie Behavior
 
 * User sessions persist for **7 days** unless the user logs out.
 * Cart data and login state are maintained across browser sessions.
@@ -141,6 +143,6 @@ Session Check Middleware:
 
 * The Product Page dynamically loads product details using the product ID from the URL.
 * Navbar provides consistent navigation across the site.
-* "Add to Cart" functionality updates the cart via backend POST request.
-* Backend retrieves product data and handles adding products to the cart.
-* Session checks manage user authentication for profile and cart actions.
+* "Add to Cart" functionality triggers a backend POST request and toast confirmation.
+* Backend handles product loading and cart logic.
+* Session checks enforce authentication for profile/cart-related actions.

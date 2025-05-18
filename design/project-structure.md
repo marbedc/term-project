@@ -1,29 +1,43 @@
 # 🗂️ Term Project — Project Structure & Branches
 
-## 🔥 Timeline Recommendation
+## 🔥 Final Timeline
 
-| Date         | Milestone                                                |
-|--------------|-----------------------------------------------------------|
-| Monday 05/12 | Finalize all frontend design and layout (Pug + CSS)       |
-| Friday 05/16 | Complete all backend functionality (routes + DB)          |
-| Monday 05/19 | Finish frontend JavaScript, test, debug, and deploy       |
-| Thursday 05/22 | Present the completed project                           |
+| Date            | Milestone                                                                       |
+| --------------- | ------------------------------------------------------------------------------- |
+| Monday 05/12    | Finalize all frontend design and layout (Pug + CSS)                             |
+| Monday 05/19    | Complete all backend functionality (routes + DB) and finish frontend JavaScript |
+| Wednesday 05/21 | Test, debug, and deploy                                                         |
+| Thursday 05/22  | Present the completed project                                                   |
+| Tuesday 05/27   | Term Project Final Report                                                       |
 
 ---
 
 ### 📌 Monday 05/12 — Work Split
 
 **Zoe**
-- Convert all HTML pages to Pug
-- Add shared navbar and cart layout
-- Polish final Pug structure and CSS styles
 
-**Vineela**
-- Finalize FAQ, About, and User Profile (Pug + CSS)
-- Create and initialize the `database.sqlite` file
+* Finish frontend, backend, and frontend JavaScript for:
+
+  * Homepage
+  * Product pages
+  * Cart
+  * Navbar/Footer
 
 **Marbella**
-- Test backend functionality for login, signup, and payment pages using static/mock data
+
+* Finish frontend, backend, and frontend JavaScript for:
+
+  * Signup
+  * Login
+  * Payment
+
+**Vineela**
+
+* Finish frontend, backend, and frontend JavaScript for:
+
+  * About
+  * FAQ
+  * Profile
 
 ---
 
@@ -46,27 +60,34 @@ term-project/
 ├── public/
 │   ├── images/                      # All product/company images
 │   ├── styles/                      # Separate CSS files per person
-│   │   ├── home-products-style.css
+│   │   ├── home-products-cart-style.css
 │   │   ├── login-style.css
 │   │   ├── signUp-style.css
 │   │   ├── payment-style.css
-│   ├── js/                          # Frontend JS scripts (search, cart, etc.) — will add files later
+│   │   ├── navbar-footer-style.css
+│   ├── js/                          # Frontend JS scripts
+│   │   ├── homepage.js
+│   │   ├── products.js
+│   │   ├── cart.js
+│   │   ├── search.js
+│   │   └── payment.js
 │
-├── routes/                          # Express route handlers — will add all routes later
+├── routes/                          # Express route handlers
 │   ├── account.js
 │   ├── homepage.js
 │   ├── login.js
 │   ├── payment.js
 │   ├── products.js
-│   └── signup.js
+│   ├── signup.js
+│   └── cart.js
 │
 ├── views/                           # Pug templates for dynamic rendering
-│   ├── home.pug
+│   ├── homepage.pug
 │   ├── login.pug
 │   ├── signup.pug
 │   ├── cart.pug
 │   ├── payment.pug
-│   ├── product_detail.pug
+│   ├── products.pug
 │   ├── profile.pug
 │   ├── faq.pug
 │   ├── about.pug
@@ -74,7 +95,8 @@ term-project/
 │       ├── navbar.pug
 │       └── footer.pug
 │
-├── database.sqlite                  # SQLite database (stored in root)
+├── db.js                            # SQLite database logic file
+├── store.db                         # SQLite database file
 ├── app.js                           # Express server setup
 ├── package.json                     # Project dependencies
 ├── README.md                        # Project overview and instructions
