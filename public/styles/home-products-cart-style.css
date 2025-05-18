@@ -1,3 +1,4 @@
+/* ==================== GLOBAL STYLES ==================== */
 html, body {
     height: 100%;
     margin: 0;
@@ -16,16 +17,16 @@ main {
   flex: 1;
 }
 
-/* -------------------- HOMEPAGE -------------------- */
+/* ==================== HOMEPAGE ==================== */
 
-/* HERO SECTION */
+/* ---------- HERO SECTION ---------- */
 .hero {
     text-align: center;
     margin: 40px 0;
-    background-color: #A682FF; /* Updated background */
+    background-color: #A682FF;
     padding: 20px 0;
-    border-bottom: 4px solid #7A5ACF; /* Optional for style */
-    border-radius: 20px; /* Rounded edges */
+    border-bottom: 4px solid #7A5ACF;
+    border-radius: 20px;
 }
 
 .hero h1 {
@@ -39,7 +40,7 @@ main {
     color: aliceblue;
 }
 
-/* SOLAR BANNER */
+/* ---------- SOLAR BANNER ---------- */
 .solar-banner img {
     width: 90%;
     display: block;
@@ -47,7 +48,7 @@ main {
     border-radius: 20px;
 }
 
-/* COLLECTION TITLE */
+/* ---------- COLLECTION TITLE ---------- */
 .collection-title {
     text-align: center;
     font-size: 2rem;
@@ -64,7 +65,7 @@ main {
     margin-bottom: 20px;
 }
 
-/* PRODUCTS GRID */
+/* ---------- PRODUCTS GRID ---------- */
 .products-grid {
     display: flex;
     flex-wrap: wrap;
@@ -99,9 +100,9 @@ main {
     background-color: #345a8a;
 }
 
-/* MOBILE FRIENDLY for homepage */
+/* ---------- HOMEPAGE: MOBILE FRIENDLY ---------- */
 @media (max-width: 768px) {
-      .title{
+    .title {
         display: flex;
         flex-direction: row;
     }
@@ -112,7 +113,7 @@ main {
     }
 }
 
-/* -------------------- PRODUCTS PAGE -------------------- */
+/* ==================== PRODUCTS PAGE ==================== */
 
 .product-container {
     max-width: 800px;
@@ -163,7 +164,20 @@ main {
     background-color: #345a8a;
 }
 
-/* MOBILE FRIENDLY for product detail*/
+/* ---------- CONTINUE SHOPPING LINK ---------- */
+.continue-shopping {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #715AFF;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.continue-shopping:hover {
+    text-decoration: underline;
+}
+
+/* ---------- PRODUCTS PAGE: MOBILE FRIENDLY ---------- */
 @media (max-width: 768px) {
     .product-image img {
         width: 100%;
@@ -171,5 +185,11 @@ main {
     .product-container {
         margin: 20px;
         padding: 15px;
+    }
+    .continue-shopping {
+        display: block;
+        text-align: left;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
     }
 }
