@@ -15,7 +15,7 @@ Complete all frontend, backend, and JavaScript functionality for homepage, produ
 1. **Finalize homepage + product page frontend**
 
 - [ ] Clean up spacing, text, and responsive structure
-- [ ] Confirm Pug structure matches layout documentation
+- [x] Confirm Pug structure matches layout documentation
 
 2. **Finish navbar/footer backend session logic**
 

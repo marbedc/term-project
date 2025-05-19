@@ -3,9 +3,12 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #715AFF;
     font-family: "Roboto Flex", sans-serif;
-}
+    background-image: url('/images/star-background.jpg');
+    background-repeat: repeat;
+    background-size: contain;
+    background-attachment: fixed;
+  }  
 
 .page-wrapper {
   display: flex;
@@ -19,85 +22,97 @@ main {
 
 /* ==================== HOMEPAGE ==================== */
 
-/* ---------- HERO SECTION ---------- */
-.hero {
+/* ---------- HERO BLOCK ---------- */
+.hero-block {
+    background-color: transparent;
+    padding: 60px 20px 10px;
     text-align: center;
-    margin: 40px 0;
-    background-color: #A682FF;
-    padding: 20px 0;
-    border-bottom: 4px solid #7A5ACF;
-    border-radius: 20px;
 }
-
-.hero h1 {
-    font-size: 2.5rem;
-    color: white;
-    margin-bottom: 10px;
+  
+.hero-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 4rem;
+    color: #A682FF;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
 }
-
-.hero p {
-    font-size: 1.2rem;
-    color: aliceblue;
-}
-
-/* ---------- SOLAR BANNER ---------- */
-.solar-banner img {
-    width: 90%;
-    display: block;
-    margin: 0 auto;
-    border-radius: 20px;
-}
-
-/* ---------- COLLECTION TITLE ---------- */
-.collection-title {
-    text-align: center;
+  
+.hero-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     font-size: 2rem;
-    color: white;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    letter-spacing: 0.1rem;
-}
+    color: #55C1FF;
+    margin-top: 10px;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+}  
 
-.collection-subtitle {
+/* ---------- PRODUCT GRID BLOCK ---------- */
+.product-block {
+    background-color: transparent;
+    padding: 40px 20px 40px;
     text-align: center;
-    font-size: 1.2rem;
-    color: aliceblue;
-    margin-bottom: 20px;
 }
-
-/* ---------- PRODUCTS GRID ---------- */
+  
+.product-section-title {
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 30px;
+    letter-spacing: 5px;
+}  
+  
 .products-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 20px;
+    padding: 0 20px;
 }
-
+  
 .product-card {
-    background-color: #102e4a;
+    background-color: transparent;
     border-radius: 14px;
     width: 200px;
     padding: 10px;
     text-align: center;
     transition: transform 0.2s ease;
 }
-
+  
 .product-card img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     border-radius: 10px;
+}  
+  
+  .product-card p {
+    margin: 5px 0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
-
-.product-card p {
+  
+  .product-name {
     color: white;
-    margin-top: 10px;
-    font-size: 18px;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+  
+  .product-price {
+    color: #A682FF;
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 4px;
 }
 
-.product-card:hover {
-    transform: scale(1.05);
-    background-color: #345a8a;
+.product-card a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* ---------- HOMEPAGE: MOBILE FRIENDLY ---------- */
@@ -118,7 +133,7 @@ main {
 .product-container {
     max-width: 800px;
     margin: 50px auto;
-    background-color: #102e4a;
+    background-color: black;
     padding: 20px;
     border-radius: 14px;
     color: white;
