@@ -3,11 +3,12 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap' rel='stylesheet')
     link(href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap' rel='stylesheet')
     link(rel='stylesheet' href='/styles/navbar-footer-style.css')
     link(rel='stylesheet' href='/styles/home-products-cart-style.css')
-    title= `${product.name} | Stellar`
+    link(rel='stylesheet' href='/styles/product-style.css')
+    title #{product.name} | Stellar
 
   body
     .page-wrapper
@@ -15,18 +16,22 @@ html
       include partials/navbar
 
       main
-        .product-container
-          a.continue-shopping(href='/') Continue Shopping
+        section.product-container
           .product-image
             img(src=`/images/${product.image_link}`, alt=product.name)
-          h1= product.name
-          p.description= product.description
-          p.price $#{product.price}
-          button.add-to-cart Add to Cart
+          .product-details
+            h1= product.name
+            p.description= product.description
+            p.price $#{product.price}
+
+            .button-group
+              button.add-to-cart Add to Cart
+              a.checkout-button(href='/checkout') Checkout
+              a.continue-shopping(href='/') Continue Shopping
 
       // FOOTER
       include partials/footer
-    
+
     // ADD-TO-CART SCRIPT
     script.
       const button = document.querySelector('.add-to-cart');
