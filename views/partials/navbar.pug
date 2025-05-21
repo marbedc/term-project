@@ -10,11 +10,22 @@ nav.navbar
 
   .navbar-right
     ul.nav-links
-      li
-        a(href='/profile' class='profile-link')
-          img.profile-icon(src='/images/profile-white.png' alt='Profile')
-          span.profile-text Profile
+      if isLoggedIn
+        li
+          a(href='/account' class='profile-link')
+            img.profile-icon(src='/images/profile-white.png' alt='Profile')
+            span.profile-text Profile
+
       li
         a(href='/cart' class='cart-link')
           img.cart-icon(src='/images/cart-white.png' alt='Cart')
           span.cart-text Cart
+
+      if isLoggedIn
+        li
+          a(href='/logout') Logout
+      else
+        li
+          a(href='/login') Login
+        li
+          a(href='/signup') Sign Up

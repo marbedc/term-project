@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const session = require('express-session');
 const db = require('./db.js');
 
 const app = express();
@@ -12,8 +13,18 @@ const paymentRoute = require('./routes/payment');
 const productsRoute = require('./routes/products');
 const signupRoute = require('./routes/signup');
 const cartRoute = require('./routes/cart');
+const checkUserSession = require('./middleware/checkSession');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: 'supersecretkey',         // Replace with env var in prod
+    resave: false,
+    saveUninitialized: true,
+  }));
+  
+  app.use(checkUserSession);
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '/public')));
@@ -53,6 +64,13 @@ app.get('/about', (req, res) => {
 
 //cart page
 app.use('/cart', cartRoute);
+
+// Logout route
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  });
 
 // Start the server
 app.listen(port, () => {

@@ -19,15 +19,15 @@ Complete all frontend, backend, and JavaScript functionality for homepage, produ
 
 2. **Finish navbar/footer backend session logic**
 
-- [ ] Add middleware to check `req.session.userId`
-- [ ] Handle navbar state for logged in vs. logged out
-- [ ] Redirect logic for cart/profile access
+- [x] Add middleware to check `req.session.userId`
+- [x] Handle navbar state for logged in vs. logged out
+- [x] Redirect logic for cart/profile access
 
 3. **Complete homepage + product page backend**
 
-- [ ] Finalize `/products` and `/products/:id` routing
-- [ ] Add cookie/session support to add-to-cart
-- [ ] Test database product queries
+- [x] Finalize `/products` and `/products/:id` routing
+- [x] Add cookie/session support to add-to-cart
+- [x] Test database product queries
 
 ---
 

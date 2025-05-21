@@ -20,6 +20,7 @@
   "homepage": "https://github.com/marbedc/term-project#readme",
   "dependencies": {
     "express": "^5.1.0",
+    "express-session": "^1.18.1",
     "pug": "^3.0.3",
     "sqlite3": "^5.1.7"
   },
