@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='/styles/navbar-footer-style.css')
+    link(rel='stylesheet' href='/styles/home-products-cart-style.css')
+    title Home | Stellar
+
+  body
+    .page-wrapper
+      // NAVBAR
+      include partials/navbar
+
+      main
+        // HERO SECTION
+        section.hero-block
+          h1.hero-title Shop Stellar Products
+          p.hero-subtitle Discover stars, planets, and more.
+
+        // PRODUCTS GRID
+        section.product-block
+          h2.product-section-title SOLAR SYSTEM COLLECTION
+          section.products-grid
+            each product in products
+              .product-card
+                a(href=`/products/${product.id}`)
+                  img(src=`/images/${product.image_link}`, alt=product.name)
+                  p.product-name= product.name
+                  p.product-price $#{product.price}
+
+      // FOOTER
+      include partials/footer
+
+    script(src='/scripts/search.js')

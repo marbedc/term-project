@@ -10,7 +10,7 @@ const accountRoute = require('./routes/account');
 const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
 const paymentRoute = require('./routes/payment');
-// const productsRoute = require('./routes/products');
+const productsRoute = require('./routes/products');
 const signupRoute = require('./routes/signup');
 const cartRoute = require('./routes/cart');
 const searchRoute = require('./routes/search');
@@ -27,6 +27,8 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false } // Set to true only with HTTPS
 }));
+
+app.use(checkUserSession);
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '/public')));
@@ -76,6 +78,16 @@ app.get('/about', (req, res) => {
 
 //cart page
 app.use('/cart', cartRoute);
+
+// Logout route
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  });
+
+// API routes (used by search bar)
+app.use('/api', apiRoutes);
 
 // Start the server
 app.listen(port, () => {

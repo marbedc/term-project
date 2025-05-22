@@ -156,6 +156,32 @@
     color: #A682FF;
 }
 
+/* -------------------- Toast -------------------- */
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #a682ff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  animation: fadein 0.3s ease, fadeout 0.3s ease 2.7s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeout {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
 /* -------------------- Mobile Navbar (≤ 768px, 480px & 360px) -------------------- */
 @media (max-width: 768px) {
     .navbar {
