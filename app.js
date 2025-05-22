@@ -3,9 +3,10 @@ const path = require('path');
 const session = require('express-session');
 
 const app = express();
-const port = 3000;
+//const port = 3000;
+const port = process.env.PORT || 3000;
 
-
+const checkUserSession = require('./middleware/checkUserSession');
 const accountRoute = require('./routes/account');
 const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
@@ -51,7 +52,7 @@ app.use('/login', loginRoute);
 app.use('/signup', signupRoute);
 
 // //products page
-// app.use('/products', productsRoute);
+app.use('/products', productsRoute);
 
 //payment page
 app.use('/payment', paymentRoute);
@@ -87,7 +88,7 @@ app.get('/logout', (req, res) => {
   });
 
 // API routes (used by search bar)
-app.use('/api', apiRoutes);
+//app.use('/api', apiRoutes);
 
 // Start the server
 app.listen(port, () => {
