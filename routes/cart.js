@@ -5,7 +5,10 @@ const db = require('../db');
 // POST /cart/add
 router.post('/add', (req, res) => {
   const { productId } = req.body;
-  const userId = 1; // replace with session user ID later
+  if (!req.session.user) {
+    return res.redirect('/login');
+  }
+  const userId = req.session.user.id;
 
   db.get(
     `SELECT quantity FROM cart WHERE user_id = ? AND product_id = ?`,
@@ -38,7 +41,10 @@ router.post('/add', (req, res) => {
 
 // GET /cart
 router.get('/', (req, res) => {
-  const userId = 1; // replace with session user ID later
+  if (!req.session.user) {
+    return res.redirect('/login');
+  }
+  const userId = req.session.user.id; // replace with session user ID later
 
   const query = `
     SELECT products.id, products.name, products.price, products.image_link, cart.quantity
@@ -58,7 +64,10 @@ router.get('/', (req, res) => {
 // POST /cart/remove-one
 router.post('/remove-one', (req, res) => {
   const { productId } = req.body;
-  const userId = 1; // replace with session user ID later
+  if (!req.session.user) {
+    return res.redirect('/login');
+  }
+  const userId = req.session.user.id; // replace with session user ID later
 
   db.run(
     `UPDATE cart SET quantity = quantity - 1 WHERE user_id = ? AND product_id = ? AND quantity > 0`,
