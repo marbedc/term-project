@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../db');
 
 // Serve signup page
-router.get('/signup', (req, res) => {
+router.get('/', (req, res) => {
   res.render('signup'); // views/signup.pug
 });
 

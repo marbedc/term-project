@@ -5,8 +5,6 @@ const session = require('express-session');
 const app = express();
 const port = 3000;
 
-// Body parser middleware (for forms)
-app.use(express.urlencoded({ extended: true }));
 
 const accountRoute = require('./routes/account');
 const homepageRoute = require('./routes/homepage');
@@ -18,7 +16,10 @@ const cartRoute = require('./routes/cart');
 
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: true })); // for form data
+// Body parser middleware (for forms)
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware to handle sessions
 app.use(session({
   secret: 'keyboard cat', // Change in production!
   resave: false,
@@ -54,13 +55,13 @@ app.get('/', (req, res) => {
 //signup page
 app.use('/signup', signupRoute);
 
-app.get('/signup', (req, res) => {
-    res.render('signup');
-  });
+// app.get('/signup', (req, res) => {
+//     res.render('signup');
+//   });
 
-  app.get('/', (req, res) => {
-    res.redirect('/signup');
-  });
+//   app.get('/', (req, res) => {
+//     res.redirect('/signup');
+//   });
 
 // //products page
 // app.use('/products', productsRoute);
