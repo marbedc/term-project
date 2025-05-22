@@ -13,6 +13,7 @@ const paymentRoute = require('./routes/payment');
 const productsRoute = require('./routes/products');
 const signupRoute = require('./routes/signup');
 const cartRoute = require('./routes/cart');
+const apiRoutes = require('./routes/api');
 const checkUserSession = require('./middleware/checkSession');
 
 app.use(express.json());
@@ -71,6 +72,9 @@ app.get('/logout', (req, res) => {
       res.redirect('/');
     });
   });
+
+// API routes (used by search bar)
+app.use('/api', apiRoutes);
 
 // Start the server
 app.listen(port, () => {

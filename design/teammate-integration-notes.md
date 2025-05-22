@@ -73,6 +73,11 @@ This file summarizes the changes reverted and tasks assigned to each teammate du
   include partials/navbar
   ```
 
+### ⚠️ IMPORTANT: You MUST include the search script on every page that uses the navbar:
+  ```pug
+script(src='/scripts/search.js')
+  ```
+
 ---
 
 ## 🔍 To Be Implemented Later (By Zoe)

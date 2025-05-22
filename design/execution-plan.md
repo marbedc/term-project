@@ -37,25 +37,25 @@ Complete all frontend, backend, and JavaScript functionality for homepage, produ
 
 4. **Cart backend**
 
-- [ ] `GET /cart`, `POST /cart/remove-one`
-- [ ] Join cart + products table using `user_id`
+- [x] `GET /cart`, `POST /cart/remove-one`
+- [x] Join cart + products table using `user_id`
 
 5. **Cart frontend Pug + base layout**
 
-- [ ] List items with image, name, quantity, price, total
-- [ ] Show empty cart view vs. item view
-- [ ] Add total price + checkout/add items buttons
+- [x] List items with image, name, quantity, price, total
+- [x] Show empty cart view vs. item view
+- [x] Add total price + checkout/add items buttons
 
 6. **Cart JavaScript**
 
-- [ ] Trashcan decrement logic
-- [ ] Disable checkout button when cart is empty
+- [x] Trashcan decrement logic
+- [x] Disable checkout button when cart is empty
 
 **Goal:** Make everything interactive.
 
 7. **Product page JS**
 
-- [ ] `Add to Cart` → POST → Toast
+- [x] `Add to Cart` → POST → Toast
 
 8. **Search bar JS**
 
@@ -63,12 +63,12 @@ Complete all frontend, backend, and JavaScript functionality for homepage, produ
 
 9. **Finalize homepage/product CSS**
 
-- [ ] Product card spacing, button styles, hover states
+- [x] Product card spacing, button styles, hover states
 
 10. **Finish cart styling**
 
-- [ ] Stack buttons on mobile
-- [ ] Font/layout polish
+- [x] Stack buttons on mobile
+- [x] Font/layout polish
 
 ---
 

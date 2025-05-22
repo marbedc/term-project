@@ -7,12 +7,10 @@ html
     link(href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap' rel='stylesheet')
     link(rel='stylesheet' href='/styles/navbar-footer-style.css')
     link(rel='stylesheet' href='/styles/home-products-cart-style.css')
-    link(rel='stylesheet' href='/styles/product-style.css')
     title #{product.name} | Stellar
 
   body
     .page-wrapper
-      // NAVBAR
       include partials/navbar
 
       main
@@ -25,31 +23,11 @@ html
             p.price $#{product.price}
 
             .button-group
-              button.add-to-cart Add to Cart
-              a.checkout-button(href='/checkout') Checkout
+              button#add-to-cart.add-to-cart(data-product-id=product.id) Add to Cart
+              a.checkout-btn(href='/cart') Checkout
               a.continue-shopping(href='/') Continue Shopping
 
-      // FOOTER
       include partials/footer
 
-    // ADD-TO-CART SCRIPT
-    script.
-      const button = document.querySelector('.add-to-cart');
-      if (button) {
-        button.addEventListener('click', () => {
-          fetch('/cart/add', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ productId: !{product.id} })
-          })
-          .then(res => {
-            if (res.ok) {
-              alert('Product added to cart!');
-            } else {
-              alert('Failed to add product.');
-            }
-          });
-        });
-      }
+    script(src='/scripts/search.js')
+    script(src='/scripts/products.js')

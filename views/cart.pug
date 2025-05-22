@@ -4,26 +4,41 @@ html
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Cart | Stellar
+    link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap' rel='stylesheet')
     link(rel='stylesheet' href='/styles/navbar-footer-style.css')
-    link(rel='stylesheet', href='/styles/home-products-style.css')
+    link(rel='stylesheet' href='/styles/home-products-cart-style.css')
   body
     include partials/navbar
 
-    main.cart-container
-      h1 Your Cart
+    main.cart-page
+      h1.cart-heading Your Cart
 
-      if cart.length
-        ul.cart-items
-          each item in cart
-            li.cart-item
-              span.item-name #{item.name}
-              span.item-quantity x #{item.quantity}
-              span.item-price $#{(item.price * item.quantity).toFixed(2)}
-        .cart-summary
-          span.total-label Total:
-          span.total-amount $#{total.toFixed(2)}
-          button.checkout-btn Checkout
-      else
-        p.empty-cart Your cart is empty.
+      .cart-layout
+        .cart-left
+          if cart.length
+            ul.cart-items
+              each item in cart
+                li.cart-item
+                  img.cart-img(src=`/images/${item.image_link}`, alt=item.name)
+                  .item-details
+                    span.item-name #{item.name}
+                    span.item-quantity x #{item.quantity}
+                    span.item-price $#{(item.price * item.quantity).toFixed(2)}
+                  button.trash-btn(data-product-id=item.id) 🗑
+          else
+
+        .cart-right
+          .cart-summary
+            h2 Summary
+            if cart.length
+              p.total-label Subtotal:
+              p.total-amount $#{total.toFixed(2)}
+            else
+              p.summary-note Your cart is empty.
+            button.cart-checkout-btn#checkout-btn(disabled=cart.length === 0) Checkout
+            a.add-items-button(href='/') Add More Items
 
     include partials/footer
+    script(src='/scripts/cart.js')
+    script(src='/scripts/search.js')
