@@ -26,7 +26,16 @@ router.post('/', async (req, res) => {
     return res.render('login', { error: "Invalid password" });
   }
 
-  res.redirect('/homepage'); //call /home
+  // Store user information in session
+  req.session.user = {
+    id: user.id,
+    first_name: user.first_name,
+    last_name: user.last_name,
+    email: user.email,
+    date_of_birth: user.date_of_birth
+  };
+
+  res.redirect('/homepage'); //successful login, redirect to homepage
 });
 
 

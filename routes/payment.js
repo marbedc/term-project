@@ -3,7 +3,8 @@ const router = express.Router();
 const db = require('../db');
 
 router.get('/payment', (req, res) => {
-  const userId = 1; // or from session
+  const userId = req.session.user.id; // or from session
+  if (!userId) return res.redirect('/login');
 
   const query = `
     SELECT 
@@ -47,7 +48,7 @@ router.get('/payment', (req, res) => {
 
 //--------POST--------------------
 router.post('/payment', (req, res) => {
-  const userId = 1; // Replace with real session ID later
+  const userId = req.session.user.id; // Replace with real session ID later
   if (!userId) return res.redirect('/login');
 
   const orderDate = new Date().toISOString();

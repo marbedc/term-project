@@ -5,12 +5,6 @@ const path = require('path');
 const db = require('../db')
 
 router.get('/', (req, res) => {
-
-    //hardcoded user for testing
-    req.session.user = {
-        id: 1,
-    }
-
     // Check if the user is logged in
     if (!req.session.user) {
         return res.redirect('/login');
