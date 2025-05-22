@@ -6,15 +6,15 @@ html
     link(href="https://fonts.googleapis.com/css2?family=Roboto&display=swap", rel="stylesheet")
     link(href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap", rel="stylesheet")
     link(rel="stylesheet", href="/styles/payment-style.css")
-    title Checkout - Lorem
+    link(rel="stylesheet", href="/styles/navbar-footer.css")
+    title Checkout - Stellar
   body
-    nav.navbar
-      .div-title
-        span.nav-span: a(rel="#") Lorem
-        button.view-bag-btn View Bag
+  .page-container
+    //NAVBAR
+    include partials/navbar
 
-    .main-wrapper
-      form.payment-form
+    main
+      form.payment-form(action="/payment", method="POST")
         label.form-label CONTACT
         input.form-input(type="text", id="email", name="email", placeholder="Email", required)
 
@@ -28,7 +28,7 @@ html
           input.form-input-last-name(type="text", id="last-name", name="last-name", placeholder="Last Name", required)
 
         input.form-input(type="text", id="address1", name="address1", placeholder="Address Line 1", required)
-        input.form-input(type="text", id="address2", name="address2", placeholder="Address Line 2", required)
+        input.form-input(type="text", id="address2", name="address2", placeholder="Address Line 2")
 
         .city-state-zip
           input.city-state-zip-input(type="text", id="city", name="city", placeholder="City", required)
@@ -40,14 +40,14 @@ html
         span.span-titles SHIPPING METHOD
         .shipping-methods
           label.method
-            input(type="radio", name="shipping", value="standard", checked)
+            input(type="radio", name="shipping", value="5", checked)
             .content
               .details
                 span.title Standard Delivery (4 - 7 Working Days)
                 span.price $5.00
 
           label.method
-            input(type="radio", name="shipping", value="express")
+            input(type="radio", name="shipping", value="15")
             .content
               .details
                 span.title Express Delivery (3 Working Days)
@@ -55,35 +55,125 @@ html
 
         .payment-div
           label.form-label PAYMENT
-          input.form-input(type="text", id="card-number", name="card-number", placeholder="Card Number", required)
+          input.form-input-pay(type="text", id="card-number", name="card-number", placeholder="Card Number", required)
 
           .first-last-name
-            input.form-input-name(type="text", id="expiration-date", name="expiration-date", placeholder="Expiration Date (MM/YY)", required)
-            input.form-input-last-name(type="text", id="cvv", name="cvv", placeholder="CVV", required)
+            input.form-input-pay(type="text", id="expiration-date", name="expiration-date", placeholder="Expiration Date (MM/YY)", required)
+            input.form-input-pay(type="text", id="cvv", name="cvv", placeholder="CVV", required)
 
-          input.form-input(type="text", id="name-on-card", name="name-on-card", placeholder="Name On Card", required)
+          input.form-input-pay(type="text", id="name-on-card", name="name-on-card", placeholder="Name On Card", required)
+          
+          .cart-mobile 
+            include partials/cart-summary
           p By placing your order you agree to Lorem's Terms and Conditions, Privacy Notice and Cookie Policy
+        if cartItems && cartItems.length
+          .btn-pay
+            button PAY NOW
+        else 
+          style.
+            .button-link {
+              background-color: #102e4a ;
+              color: white;
+              padding: 10px 20px;
+              border-radius: 5px;
+              text-decoration: none;
+              font-weight: bold;
+              display: inline-block;
+              transition: background-color 0.3s ease;
+            }
 
-        .btn-pay
-          button PAY NOW
+            .button-link:hover {
+              background-color: #715AFF;
+            }
 
-      .cart
-        .div-item
-          img(src="/images/star.png", alt="item-pic")
-          .item-details
-            span.title Vega
-            span.price $15.00
-            span.subtitle A bright star in the Lyra constellation.
+            .button-link:active {
+              background-color: #5887FF;
+              transform: translateY(0);
+            }
 
-        .item-totals
-          span.title Subtotal
-          span.price $15.00
+            .button-link {
+              margin: 20px auto;
+              text-align: center;
+            }
 
-          span.title Shipping
-          span.price $3.00
+          a.button-link(href="/products") ADD ITEMS TO YOUR CART
 
-          span.title Estimated Taxes
-          span.price $1.50
+      .cart-desktop  
+        .cart
+          if cartItems && cartItems.length
+            each item in cartItems
+              .div-item
+                img(src=`/images/${item.image_link}`, alt="item-pic")
+                .item-details
+                  .name-price
+                    span.title #{item.name}
+                    span.price $#{(item.price).toFixed(2)}
+                  span.subtitle #{item.description}
+                  .name-price
+                    span.quantity Quantity 
+                    span.quantity x #{item.quantity}
+          else
+            p No products to display. Your cart is empty.
 
-          span.title-total Total
-          span.price $19.50
+          if cartItems && cartItems.length
+            .item-totals
+              .total-row
+                span.label Subtotal
+                span.value#subtotal-value $#{summary.subtotal}
+              .total-row
+                span.label Shipping
+                span.value#shipping-value $#{summary.shipping}
+              .total-row
+                span.label Taxes
+                span.value#taxes-value $#{summary.taxes}
+              .total-row
+                span.label Total
+                span.value#total-value $#{summary.total}
+
+
+
+
+
+    //FOOTER
+    include partials/footer
+
+    script.
+      document.addEventListener('DOMContentLoaded', () => {
+      const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+      const subtotalElement = document.getElementById('subtotal-value');
+      const shippingElement = document.getElementById('shipping-value');
+      const taxesElement = document.getElementById('taxes-value');
+      const totalElement = document.getElementById('total-value');
+
+      if (!subtotalElement || !shippingElement || !taxesElement || !totalElement) {
+        console.error('Cart summary elements not found.');
+        return;
+      }
+
+      const subtotal = parseFloat(subtotalElement.textContent.replace('$', ''));
+      const taxRate = 0.07;
+
+      function updateTotals(shippingCost) {
+        const taxes = parseFloat((subtotal * taxRate).toFixed(2));
+        const total = (subtotal + shippingCost + taxes).toFixed(2);
+
+        shippingElement.textContent = `$${shippingCost.toFixed(2)}`;
+        taxesElement.textContent = `$${taxes}`;
+        totalElement.textContent = `$${total}`;
+      }
+
+      // Initialize with the default checked shipping value
+      const defaultShipping = parseFloat(document.querySelector('input[name="shipping"]:checked').value);
+      updateTotals(defaultShipping);
+
+      // Update when the user changes the shipping method
+      shippingRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+          const selectedShipping = parseFloat(radio.value);
+          updateTotals(selectedShipping);
+        });
+      });
+      });
+
+
+

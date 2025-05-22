@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
-const db = require('./db.js');
 
 const app = express();
 const port = 3000;
+
 
 const accountRoute = require('./routes/account');
 const homepageRoute = require('./routes/homepage');
@@ -17,15 +17,19 @@ const apiRoutes = require('./routes/api');
 const checkUserSession = require('./middleware/checkSession');
 
 app.use(express.json());
+
+// Body parser middleware (for forms)
 app.use(express.urlencoded({ extended: true }));
 
+// Middleware to handle sessions
 app.use(session({
-    secret: 'supersecretkey',         // Replace with env var in prod
-    resave: false,
-    saveUninitialized: true,
-  }));
-  
-  app.use(checkUserSession);
+  secret: 'keyboard cat', // Change in production!
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true only with HTTPS
+}));
+
+app.use(checkUserSession);
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '/public')));
@@ -44,6 +48,14 @@ app.use('/account', accountRoute);
 //login page
 app.use('/login', loginRoute);
 
+app.get('/login', (req, res) => {
+  res.render('login'); // login.pug in /views folder
+});
+
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
+
 //signup page
 app.use('/signup', signupRoute);
 
@@ -51,7 +63,12 @@ app.use('/signup', signupRoute);
 app.use('/products', productsRoute);
 
 //payment page
-app.use('/payment', paymentRoute);
+app.use('/', paymentRoute);
+
+//confirmation page
+app.get('/confirmation', (req, res) => {
+  res.render('confirmation');
+});
 
 //faq page
 app.get('/faq', (req, res) => {

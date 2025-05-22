@@ -4,10 +4,111 @@ body {
     padding: 0;
     background-color: #5887FF;
     font-family: "Roboto Flex", sans-serif;
+}
+
+.page-wrapper {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 main{
     flex: 1;
+}
+
+.account {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.account button {
+    background-color: #A682FF;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account img {
+    width: 20vh;
+    height: 20vh;
+    border-radius: 100%;
+    border: 10px solid white;
+}
+
+.account-info, .past-orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-info {
+    width: 40vh;
+    height: 75vh;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.account-info h2, .account-info p{
+    font-size: 1.5rem;
+    color: white;
+}
+
+.gap{
+    height: 15vh;
+}
+
+.past-orders {
+    width: 100vh;
+    height: 70vh;
+    background-color: white;
+    overflow: auto;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.past-orders h2 {
+    font-size: 2rem;
+}
+
+.order {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 90%;
+}
+
+@media (max-width: 768px) {
+    .account {
+        flex-direction: column;
+    }
+
+    .past-orders {
+        width: 90vw;
+        height: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .account-info {
+        width: 90vw;
+        height: auto;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    .gap{
+        height: 5vh;
+    }
 }
