@@ -275,6 +275,19 @@ select#country {
   width: 100%;
 }
 
+.cart-desktop .name-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+}
+
+
+.cart-desktop .price {
+  text-align: right;
+}
+
+
 .cart-desktop .div-item{
   display: flex;
   flex-direction: row;
@@ -282,6 +295,7 @@ select#country {
 
 .cart-desktop img{
   width: 130px;
+  height: 80px;
   border-radius: 10px;
 
 }
@@ -296,6 +310,7 @@ select#country {
 .cart-desktop .price {
   font-weight: bold;
   float: right;
+  
 }
 
 .cart-desktop p,
@@ -304,18 +319,42 @@ select#country {
   margin-bottom: 0.5rem;
 }
 
-.item-totals{
-  display: flex;
-  flex-direction: column;
-  margin-left: 150px;
-  
+.title, 
+.price,
+.quantity,
+.label,
+#subtotal-value,
+#shipping-value,
+#taxes-value,
+#total-value{
+  font-weight: bold;
 }
 
-.total-row{
+.item-totals {
   display: flex;
-  flex-direction: row;
-  gap: 150px;
+  flex-direction: column;
+  margin-left: 150px; 
+  gap: 0.5rem;
 }
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.total-row .label {
+  flex: 1;
+  text-align: left;
+}
+
+.total-row .value {
+  flex: 1;
+  text-align: right;
+}
+
+
 
 /*-------------mobile---------------------------------------------------*/
 /* Base styles for mobile */

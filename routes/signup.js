@@ -8,7 +8,7 @@ router.get('/signup', (req, res) => {
 });
 
 // Handle user registration
-router.post('/signup', (req, res) => {
+router.post('/', (req, res) => {
   const { firstName, lastName, DOB, email, password } = req.body;
 
   // Basic field validation

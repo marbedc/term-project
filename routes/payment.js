@@ -13,7 +13,7 @@ router.get('/payment', (req, res) => {
       p.price,
       p.image_link
     FROM cart c
-    JOIN products p ON c.product_id = p.product_id
+    JOIN products p ON c.product_id = p.id
     WHERE c.user_id = ?
   `;
 
@@ -56,12 +56,12 @@ router.post('/payment', (req, res) => {
 
   db.all(getCartItems, [userId], (err, items) => {
     if (err) {
-      console.error('❌ Error fetching cart items:', err);
+      console.error('Error fetching cart items:', err);
       return res.status(500).send('Error processing order.');
     }
 
     if (items.length === 0) {
-      console.warn('⚠️ Cart is empty.');
+      console.warn('Cart is empty.');
       return res.send('Cart is empty.');
     }
 
@@ -76,20 +76,20 @@ router.post('/payment', (req, res) => {
 
     insertOrder.finalize(err => {
       if (err) {
-        console.error('❌ Error inserting order:', err);
+        console.error('Error inserting order:', err);
         return res.status(500).send('Failed to save order.');
       }
 
-      console.log('✅ Orders inserted. Now clearing cart...');
+      console.log('Orders inserted. Now clearing cart...');
 
       db.run(`DELETE FROM cart WHERE user_id = ?`, [userId], err => {
         if (err) {
-          console.error('❌ Error clearing cart:', err);
+          console.error('Error clearing cart:', err);
           // Still redirect even if cart clear fails
           return res.redirect('/confirmation');
         }
 
-        console.log('🛒 Cart cleared successfully.');
+        console.log('Cart cleared successfully.');
         res.redirect('/confirmation');
       });
     });
