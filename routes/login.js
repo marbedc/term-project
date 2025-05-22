@@ -1,13 +1,5 @@
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD
-
-router.get('/', (req, res) => {
-    // Render the login page
-    res.render('login');
-});
-
-=======
 const db = require('../db');
 
 //user login
@@ -41,5 +33,4 @@ router.post('/login', async (req, res) => {
 });
 
 
->>>>>>> Marbella's-finished-work
 module.exports = router;
