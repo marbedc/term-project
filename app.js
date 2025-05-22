@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+// Body parser middleware (for forms)
+app.use(express.urlencoded({ extended: true }));
+
 const accountRoute = require('./routes/account');
 // const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
