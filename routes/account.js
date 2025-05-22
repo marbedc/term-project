@@ -24,9 +24,10 @@ router.get('/', (req, res) => {
                     return res.status(404).send('Information not found');
                 } else {
                     res.render('account', {
-                        first_name: rows[0].first_name,
-                        last_name: rows[0].last_name,
-                        email: rows[0].email,
+                        user: req.session.user,
+                        first_name: req.session.user.first_name,
+                        last_name: req.session.user.last_name,
+                        email: req.session.user.email,
                         orders: rows
                     });
                 }

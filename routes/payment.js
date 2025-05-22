@@ -3,8 +3,8 @@ const router = express.Router();
 const db = require('../db');
 
 router.get('/payment', (req, res) => {
-  const userId = req.session.user.id; // or from session
-  if (!userId) return res.redirect('/login');
+  if (!req.session.user) return res.redirect('/login');
+  const userId = req.session.user.id;
 
   const query = `
     SELECT 
@@ -40,6 +40,7 @@ router.get('/payment', (req, res) => {
     };
 
     res.render('payment', {
+      user: req.session.user,
       cartItems,
       summary
     });

@@ -76,12 +76,14 @@ app.get('/confirmation', (req, res) => {
 
 //faq page
 app.get('/faq', (req, res) => {
-    res.render('faq');
+    const user = req.session.user;
+    res.render('faq', { user });
 });
 
 //about page
 app.get('/about', (req, res) => {
-    res.render('about');
+    const user = req.session.user;
+    res.render('about', { user });
 });
 
 //cart page

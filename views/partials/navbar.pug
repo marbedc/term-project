@@ -10,10 +10,16 @@ nav.navbar
 
   .navbar-right
     ul.nav-links
-      li
-        a(href='/account' class='profile-link')
-          img.profile-icon(src='/images/profile-white.png' alt='Profile')
-          span.profile-text Profile
+      if user
+        li
+          a(href='/account' class='profile-link')
+            img.profile-icon(src='/images/profile-white.png' alt='Profile')
+            span.profile-text #{user.first_name}
+      else
+        li
+          a(href='/login' class='profile-link')
+            img.profile-icon(src='/images/profile-white.png' alt='Profile')
+            span.profile-text Login
       li
         a(href='/cart' class='cart-link')
           img.cart-icon(src='/images/cart-white.png' alt='Cart')
