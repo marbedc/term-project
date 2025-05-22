@@ -6,7 +6,7 @@ const app = express();
 //const port = 3000;
 const port = process.env.PORT || 3000;
 
-const checkUserSession = require('./middleware/checkUserSession');
+const checkUserSession = require('./middleware/checkSession');
 const accountRoute = require('./routes/account');
 const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
