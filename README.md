@@ -10,6 +10,19 @@ Welcome to Stellar! 🌟 Your one-stop shop for buying stars, planets, and every
 [Usage](README.md#-usage)  
 [License](README.md#-license)  
 [Contact](README.md#-contact)  
+About
+
+Features
+
+Technologies Used
+
+Installation
+
+Usage
+
+License
+
+Contact
 
 # ✨ About
 

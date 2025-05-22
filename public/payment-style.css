@@ -1,0 +1,376 @@
+body{
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: "Roboto Flex", sans-serif;
+    height: 1100px;
+}
+
+.nav-span{
+    color: white;
+    letter-spacing: 0.4rem;
+    font-size: 40px;
+    cursor: pointer;
+    margin-left: 50px;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 2rem;
+    background-color: #102e4a;
+    
+  }
+  
+.view-bag-btn{
+  display: none;
+}
+  
+.main-wrapper{
+   
+    display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 1500px;     
+  margin: 0 auto;   
+  height: 100%;
+}
+
+.form-label{
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    margin-top: 20px;
+    bottom: 8px;
+    right: 245px;
+}
+
+.form-input{
+     margin-bottom: 10px;
+    width: 564px;
+    height: 40px;
+    position: relative;
+    bottom: 5px;
+    border-radius: 8px;
+    border: none;
+    background-color: whitesmoke;
+    padding-left: 1rem;
+}
+
+ 
+.payment-form{
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+    align-items: center;
+    flex: 1;
+    background-color: #5887FF; 
+    padding: 30px;
+    height: 100%;
+}
+
+select {
+    width: 84.9%;
+    padding: 10px;
+    font-size: 13.5px;
+    color: rgb(138, 131, 131);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    border: none;
+  }
+
+.first-last-name{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content:left;
+    align-items: center;
+}
+
+.form-input-name, .form-input-last-name{
+    margin-bottom: 10px;
+    width: 264px;
+    height: 40px;
+    position: relative;
+    bottom: 5px;
+    border-radius: 8px;
+    border: none;
+    background-color: whitesmoke;
+    padding-left: 1rem;
+}
+
+.city-state-zip{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content:left;
+    align-items: center;
+}
+
+.city-state-zip-input{
+    margin-bottom: 10px;
+    width: 40%;
+    height: 40px;
+    position: relative;
+    bottom: 5px;
+    border-radius: 8px;
+    border: none;
+    background-color: whitesmoke;
+    padding-left: 1rem;
+}
+
+.span-titles{
+    margin-top: 20px;
+    position: relative;
+    right:215px;
+    font-weight: bold;
+}
+
+.shipping-methods{
+    margin-top: 10px;
+    width: 580px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    
+}
+
+.method{
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.content {
+    flex: 1;
+  }
+
+  .method input:checked + .content {
+    background-color: gainsboro;
+    border: 1px solid black;
+    border-radius: 4px;
+  } 
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .title, .title-total {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color:  #333;;
+    flex-basis: 100%;
+  }
+
+  .price {
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    text-align: right;
+    min-width: 60px;
+    display: inline-block;
+  }
+
+  .payment-div{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+   
+    justify-content:left;
+    align-items: center;
+  }
+
+  p{
+    width: 580px;
+  }
+
+  .btn-pay{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-pay button{
+    width: 580px;
+    height: 40px;
+    position: relative;
+    top: 10px;
+    border-radius: 14px;
+    background-color: #102e4a;
+    color: white;
+    letter-spacing: 0.2rem;
+    font-size: 17px;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .button-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #715AFF;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  font-family: "Roboto Flex", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-link:hover {
+  background-color: #5887FF;
+  transform: translateY(-2px);
+}
+
+.button-link:active {
+  background-color: #102e4a;
+  transform: translateY(0);
+}
+
+.button-link {
+  margin: 20px auto;
+  text-align: center;
+}
+
+  
+.cart{
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content:right;
+    align-items: center;
+    flex: 1;
+    background-color: #715AFF; 
+    padding: 30px;
+    height:100%;
+}
+
+.div-item{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:right;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    right: 120px;
+}
+
+.item-details{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+img{
+    max-width: 120px;
+    border-radius: 8px;
+}
+
+.item-totals {
+    display: grid;
+    grid-template-columns: 1fr auto; 
+    row-gap: 10px;
+    margin-top: 30px;
+    width: 70%;
+    position: relative;
+    right: 17px;
+  }
+
+
+.price:last-child, .title-total{
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+.item-totals {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.total-row .label {
+  flex: 1;
+  text-align: left;
+}
+
+.total-row .value {
+  flex: 1;
+  text-align: right;
+  font-weight: bold;
+  min-width: 80px;
+}
+
+
+  /*MOBILE CSS*/
+  @media (max-width: 768px) {
+
+    .nav-span{
+      margin-left: 40px;
+    }
+
+    .payment-form select{
+      width: 87.5%;
+    }
+
+    .form-label{
+     margin-left: 8px;
+    }
+
+    .div-title{
+      display: flex;
+      flex-direction: row;
+    }
+
+    .view-bag-btn{
+      display:block;
+      width: 150px;
+      height: 30px;
+      background-color: #5887FF;
+      border-radius: 9px;
+      color: whitesmoke;
+      font-size: 18px;
+      margin: 10px;
+      margin-left: 280px;
+      border: none;
+    }
+
+    .cart{
+      display: none;
+  }
+
+  }
+  
