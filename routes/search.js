@@ -3,8 +3,10 @@ const router = express.Router();
 const db = require('../db');
 
 router.get('/', (req, res) => {
-    console.log('Search route accessed');
     const query = req.query.q;
+    db.all('SELECT * FROM products WHERE name LIKE ?', [`%${query}%`], (err, rows) => {
+
+    });
     res.json(query);
 });
 
