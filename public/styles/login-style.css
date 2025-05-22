@@ -10,10 +10,14 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-image: url('/images/star-background.jpg');
+  background-repeat: repeat;
+    background-size: contain;
+    background-attachment: fixed;
 }
 
 body {
-  background-color: #5887ff;
+  
   /*font-family: 'Roboto', sans-serif;*/
   font-family: "Roboto Flex", sans-serif;
 
@@ -55,18 +59,11 @@ main {
   height: 300px;
 }
 
-span {
-  color: white;
-  letter-spacing: 0.3rem;
-  font-size: 25px;
-
+.signin-title{
+  color: #A682FF;
+  font-weight: bold;
 }
 
-span:hover {
-  text-decoration: none;
-  background-color: #5887ff;
-  color: aliceblue;
-}
 
 .form-input {
   margin-top: 20px;
@@ -92,6 +89,9 @@ span:hover {
 .label-div label {
   text-decoration: underline;
   cursor: pointer;
+  
+  color: #A682FF;
+  font-weight: bold;
 }
 
 
@@ -208,4 +208,15 @@ button:hover {
 
 .btn-signIn button:active {
   transform: scale(0.95);
+}
+
+a{
+  color: #A682FF;
+  font-weight: bold;
+}
+
+label{
+  color: #A682FF;
+  font-weight: bold;
+
 }

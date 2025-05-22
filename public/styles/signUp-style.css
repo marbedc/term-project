@@ -6,7 +6,7 @@
 
 
 body {
-  background-color: #5887ff;
+  
   /*font-family: 'Roboto', sans-serif;*/
   font-family: "Roboto Flex", sans-serif;
 
@@ -17,6 +17,10 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-image: url('/images/star-background.jpg');
+  background-repeat: repeat;
+    background-size: contain;
+    background-attachment: fixed;
 }
 
 main {
@@ -56,6 +60,10 @@ main {
 h2{
   margin-top: 30px;
   margin-bottom: 9px;
+  
+  color: #A682FF;
+  font-weight: bold;
+
 }
 
 .form-input {
@@ -185,3 +193,15 @@ button:hover {
 .btn-signIn button:active {
   transform: scale(0.95);
 }
+
+a{
+  color: #A682FF;
+  font-weight: bold;
+}
+
+label{
+  color: #A682FF;
+  font-weight: bold;
+
+}
+

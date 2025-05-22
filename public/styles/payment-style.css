@@ -14,10 +14,14 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: "Roboto Flex", sans-serif;
+  background-image: url('/images/star-background.jpg');
+  background-repeat: repeat;
+    background-size: contain;
+    background-attachment: fixed;
 }
 
 body {
-  background: linear-gradient(to right, #548CFF 50%, #7B61FF 50%);
+  
   display: flex;
   flex-direction: column;
 }
@@ -63,7 +67,8 @@ main {
   .cart-desktop {
     align-items: flex-start;
     margin-left: 2rem;
-    background-color: #7B61FF;
+    border-width: 2px;
+    border-color: #A682FF;
     border-radius: 12px;
     color: #000;
   }
@@ -79,7 +84,8 @@ main {
     padding: 20px;
     box-sizing: border-box;
     height: fit-content; /* shrink wrap content */
-    background-color: #7B61FF;
+    
+    border: 1px solid #A682FF;
     border-radius: 10px;
     color: white;
     display: flex;
@@ -98,12 +104,14 @@ form.payment-form {
 }
 
 .form-label{
-  font-weight: bold;
   font-size: 1.3rem;
   margin-bottom: 0rem;
+  color: #A682FF;
+  font-weight: bold;
 }
 
 .span-titles {
+  color: #A682FF;
   font-weight: bold;
   font-size: 1.3rem;
   margin-bottom: 0rem;
@@ -354,25 +362,23 @@ select#country {
   text-align: right;
 }
 
+p{
+  color: #A682FF;
+  font-weight: bold;
+}
 
 
 /*-------------mobile---------------------------------------------------*/
 /* Base styles for mobile */
 @media (max-width: 768px) {
-  body {
-    background-color: #548CFF;
-  }
-
+ 
   main {
     flex-direction: column;
     align-items: center;
     padding: 1rem;
   }
 
-  .page-container {
-  background-color: #548CFF;
-}
-
+  
   .payment-form {
     width: 100%;
     max-width: 500px;
