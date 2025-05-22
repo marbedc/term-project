@@ -3,11 +3,9 @@ nav.navbar
     a(href='/')
       img.logo(src='/images/logo.png' alt='Stellar Logo')
       span.logo-text Stellar
-
-    //- Updated search form for JS
-    form#search-form
-      input#search-input(type='text' placeholder='Search products...')
-      button(type='submit')
+    form.search-form(action='/search' method='GET')
+      input#search(type='text' name='q' placeholder='Search products...')
+      button#search-btn(type='submit')
         img(src='/images/search-white.png' alt='Search' class='search-icon')
 
   .navbar-right
@@ -26,12 +24,3 @@ nav.navbar
         a(href='/cart' class='cart-link')
           img.cart-icon(src='/images/cart-white.png' alt='Cart')
           span.cart-text Cart
-
-      if isLoggedIn
-        li
-          a(href='/logout') Logout
-      else
-        li
-          a(href='/login') Login
-        li
-          a(href='/signup') Sign Up

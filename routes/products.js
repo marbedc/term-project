@@ -1,7 +1,7 @@
 const express = require('express');
+//const { use } = require('react');
 const router = express.Router();
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('store.db');
+const db = require('../db');
 
 // GET /products → optional: redirect or homepage
 router.get('/', (req, res) => {
@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
     if (!product) {
       return res.status(404).send("Product not found");
     }
-    res.render('products', { product });
+    res.render('products', { product, user: req.session.user });
   });
 });
 

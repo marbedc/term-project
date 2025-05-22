@@ -8,7 +8,7 @@ html
     link(rel='stylesheet' href='/styles/navbar-footer-style.css')
     link(rel='stylesheet' href='/styles/home-products-cart-style.css')
     link(rel="icon", href="/images/logo.png", type="image/png")
-    title Home | Stellar
+    title Search Results | Stellar
 
   body
     .page-wrapper
@@ -16,21 +16,19 @@ html
       include partials/navbar
 
       main
-        // HERO SECTION
-        section.hero-block
-          h1.hero-title Shop Stellar Products
-          p.hero-subtitle Discover stars, planets, and more.
-
         // PRODUCTS GRID
         section.product-block
-          h2.product-section-title SOLAR SYSTEM COLLECTION
+          h2.product-section-title Search Results
           section.products-grid
-            each product in products
-              .product-card
-                a(href=`/products/${product.id}`)
-                  img(src=`/images/${product.image_link}`, alt=product.name)
-                  p.product-name= product.name
-                  p.product-price $#{product.price}
+            if products.length === 0
+              p.no-results No products found matching your search.
+            else
+              each product in products
+                .product-card
+                  a(href=`/products/${product.id}`)
+                    img(src=`/images/${product.image_link}`, alt=product.name)
+                    p.product-name= product.name
+                    p.product-price $#{product.price}
 
       // FOOTER
       include partials/footer

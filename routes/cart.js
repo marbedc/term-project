@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('store.db');
+const db = require('../db');
 
 // POST /cart/add
 router.post('/add', (req, res) => {
@@ -52,7 +51,7 @@ router.get('/', (req, res) => {
     if (err) return res.status(500).send('Error fetching cart');
 
     const total = rows.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    res.render('cart', { cart: rows, total });
+    res.render('cart', { cart: rows, total, user: req.session.user });
   });
 });
 

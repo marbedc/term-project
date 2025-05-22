@@ -28,8 +28,6 @@ app.use(session({
   cookie: { secure: false } // Set to true only with HTTPS
 }));
 
-app.use(checkUserSession);
-
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -50,8 +48,8 @@ app.use('/login', loginRoute);
 //signup page
 app.use('/signup', signupRoute);
 
-// //products page
-// app.use('/products', productsRoute);
+//products page
+app.use('/products', productsRoute);
 
 //payment page
 app.use('/payment', paymentRoute);
@@ -78,16 +76,6 @@ app.get('/about', (req, res) => {
 
 //cart page
 app.use('/cart', cartRoute);
-
-// Logout route
-app.get('/logout', (req, res) => {
-    req.session.destroy(() => {
-      res.redirect('/');
-    });
-  });
-
-// API routes (used by search bar)
-app.use('/api', apiRoutes);
 
 // Start the server
 app.listen(port, () => {
