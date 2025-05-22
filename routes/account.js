@@ -3,6 +3,12 @@ const router = express.Router();
 const db = require('../db.js');
 
 router.get('/', (req, res) => {
+
+    //hardcoded user for testing
+    req.session.user = {
+        id: 1,
+    }
+
     // Check if the user is logged in
     if (!req.session.user) {
         return res.redirect('/login');
@@ -11,7 +17,7 @@ router.get('/', (req, res) => {
     }
 
     db.all(`SELECT orders.id AS order_id, orders.order_date, orders.quantity, products.name AS product_name, 
-            products.category, products.price, users.first_name, users.last_name, users.email
+            products.id AS product_id, products.category, products.price, users.first_name, users.last_name, users.email
             FROM orders
             JOIN products ON orders.product_id = products.id
             JOIN users ON orders.user_id = users.id
@@ -64,6 +70,10 @@ router.post('/deactivate', (req, res) => {
             res.redirect('/');
         });
     });
-}
+});
+
+router.get('/:id', (req, res) => {
+    res.redirect(`/products/${req.params.id}`);
+});
 
 module.exports = router;

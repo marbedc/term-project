@@ -23,6 +23,17 @@ main{
     align-items: center;
 }
 
+.account button {
+    background-color: #A682FF;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .account img {
     width: 20vh;
     height: 20vh;
@@ -44,13 +55,13 @@ main{
     padding: 20px;
 }
 
-.account-info h1 {
-    font-size: 2.5rem;
+.account-info h2, .account-info p{
+    font-size: 1.5rem;
     color: white;
 }
 
 .gap{
-    height: 25vh;
+    height: 15vh;
 }
 
 .past-orders {
@@ -61,6 +72,10 @@ main{
     border-radius: 20px;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.past-orders h2 {
+    font-size: 2rem;
 }
 
 .order {
@@ -86,7 +101,14 @@ main{
         margin-bottom: 10px;
     }
 
+    .account-info {
+        width: 90vw;
+        height: auto;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
     .gap{
-        height: 0vh;
+        height: 5vh;
     }
 }

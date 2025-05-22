@@ -31,6 +31,6 @@ html
                                 h3 #{order.product_name}
                                 p x#{order.quantity}
                                 p  $#{order.price}
-                                form (action="/order/#{order.id}", method="GET")
+                                form(action=`/account/${order.product_id}`, method="GET")
                                     button(type="submit") View Details
             include partials/footer

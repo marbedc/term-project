@@ -16,6 +16,14 @@ const cartRoute = require('./routes/cart');
 
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: true })); // for form data
+app.use(session({
+  secret: 'keyboard cat', // Change in production!
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true only with HTTPS
+}));
+
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '/public')));
 
