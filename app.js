@@ -62,9 +62,6 @@ app.get('/signup', (req, res) => {
     res.redirect('/signup');
   });
 
-
-
-
 // //products page
 // app.use('/products', productsRoute);
 
