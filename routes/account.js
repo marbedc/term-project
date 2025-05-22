@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD
-const db = require('../db.js');
-=======
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const db = require('db')
->>>>>>> Marbella's-finished-work
 
 router.get('/', (req, res) => {
     // AI generated code, will test later
@@ -32,10 +28,6 @@ router.get('/', (req, res) => {
     // });
 
     res.render('account'); //also not tested
-<<<<<<< HEAD
 });
 
 module.exports = router;
-=======
-});
->>>>>>> Marbella's-finished-work
