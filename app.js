@@ -48,14 +48,6 @@ app.use('/login', loginRoute);
 //signup page
 app.use('/signup', signupRoute);
 
-// app.get('/signup', (req, res) => {
-//     res.render('signup');
-//   });
-
-//   app.get('/', (req, res) => {
-//     res.redirect('/signup');
-//   });
-
 // //products page
 // app.use('/products', productsRoute);
 

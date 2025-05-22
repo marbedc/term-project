@@ -4,7 +4,7 @@ const db = require('../db');
 
 router.get('/', (req, res) => {
     const query = req.query.q;
-    db.all('SELECT * FROM products WHERE name LIKE ?', [`%${query}%`], (err, rows) => {
+    db.all('SELECT * FROM products WHERE name LIKE ? OR description LIKE ?', [`%${query}%`, `%${query}%`], (err, rows) => {
 
     });
     res.json(query);
