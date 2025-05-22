@@ -18,15 +18,19 @@ html
                         img(src="/images/profile-white.png", alt="Profile Picture")
                         h2 #{first_name} #{last_name}
                         p #{email}
-                        button Log Out
-                        button Deactivate Account
+                        .gap
+                        form(action='/account/logout', method='POST')
+                            button(type="submit") Log Out
+                        form(action='/account/deactivate', method='POST')
+                            button(type="submit") Deactivate Account
 
                     .past-orders
                         h2 Past Orders
                         for order in orders
                             .order
                                 h3 #{order.product_name}
-                                p #{order.quantity}
+                                p x#{order.quantity}
                                 p  $#{order.price}
-                                button View Details
+                                form (action="/order/#{order.id}", method="GET")
+                                    button(type="submit") View Details
             include partials/footer

@@ -2,16 +2,13 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db.js');
 
-const currentUser = 1;
-
 router.get('/', (req, res) => {
-    // // Check if the user is logged in
-    // if (!req.session.user) {
-    //     return res.redirect('/login');
-    // }
-
-    // Get the user's information from the database
-    // const userId = req.session.user.id;
+    // Check if the user is logged in
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }else {
+        currentUser = req.session.user.id;
+    }
 
     db.all(`SELECT orders.id AS order_id, orders.order_date, orders.quantity, products.name AS product_name, 
             products.category, products.price, users.first_name, users.last_name, users.email
@@ -35,5 +32,38 @@ router.get('/', (req, res) => {
                 }
             });
 });
+
+router.post('/logout', (req, res) => {
+    // Destroy the session
+    req.session.destroy((err) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Internal Server Error');
+        }
+        // Redirect to the homepage
+        res.redirect('/');
+    });
+}
+);
+
+router.post('/deactivate', (req, res) => {
+    currentUser = req.session.user.id;
+    // Deactivate the user's account
+    db.run(`DELETE FROM users WHERE id = ?`, [currentUser], (err) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Internal Server Error');
+        }
+        // Destroy the session
+        req.session.destroy((err) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Internal Server Error');
+            }
+            // Redirect to the homepage
+            res.redirect('/');
+        });
+    });
+}
 
 module.exports = router;
