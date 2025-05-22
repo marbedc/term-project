@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const db = require('./db.js');
 
 const app = express();
 const port = 3000;
@@ -32,14 +31,40 @@ app.use('/account', accountRoute);
 //login page
 app.use('/login', loginRoute);
 
+app.get('/login', (req, res) => {
+  res.render('login'); // login.pug in /views folder
+});
+
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
+
+
+
 //signup page
 app.use('/signup', signupRoute);
+
+app.get('/signup', (req, res) => {
+    res.render('signup');
+  });
+
+  app.get('/', (req, res) => {
+    res.redirect('/signup');
+  });
+
+
+
 
 // //products page
 // app.use('/products', productsRoute);
 
 //payment page
-app.use('/payment', paymentRoute);
+app.use('/', paymentRoute);
+
+//confirmation page
+app.get('/confirmation', (req, res) => {
+  res.render('confirmation');
+});
 
 //faq page
 app.get('/faq', (req, res) => {
