@@ -103,13 +103,15 @@ html
           if cartItems && cartItems.length
             each item in cartItems
               .div-item
-                img(src=item.image_link, alt="item-pic")
+                img(src=`/images/${item.image_link}`, alt="item-pic")
                 .item-details
                   .name-price
                     span.title #{item.name}
                     span.price $#{(item.price).toFixed(2)}
                   span.subtitle #{item.description}
-                  span.quantity Quantity: #{item.quantity}
+                  .name-price
+                    span.quantity Quantity 
+                    span.quantity x #{item.quantity}
           else
             p No products to display. Your cart is empty.
 
@@ -127,6 +129,7 @@ html
               .total-row
                 span.label Total
                 span.value#total-value $#{summary.total}
+
 
 
 
