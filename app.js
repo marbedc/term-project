@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const session = require('express-session');
 
 const app = express();
 const port = 3000;
@@ -8,7 +9,7 @@ const port = 3000;
 app.use(express.urlencoded({ extended: true }));
 
 const accountRoute = require('./routes/account');
-// const homepageRoute = require('./routes/homepage');
+const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
 const paymentRoute = require('./routes/payment');
 // const productsRoute = require('./routes/products');
@@ -16,6 +17,14 @@ const signupRoute = require('./routes/signup');
 const cartRoute = require('./routes/cart');
 
 app.use(express.json());
+
+app.use(express.urlencoded({ extended: true })); // for form data
+app.use(session({
+  secret: 'keyboard cat', // Change in production!
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true only with HTTPS
+}));
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '/public')));
@@ -25,8 +34,8 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 
-// //home page
-// app.use('/', homepageRoute);
+//home page
+app.use('/', homepageRoute);
 
 //account page
 app.use('/account', accountRoute);
@@ -52,9 +61,6 @@ app.get('/signup', (req, res) => {
   app.get('/', (req, res) => {
     res.redirect('/signup');
   });
-
-
-
 
 // //products page
 // app.use('/products', productsRoute);
