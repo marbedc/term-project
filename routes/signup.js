@@ -1,14 +1,5 @@
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD
-
-router.get('/', (req, res) => {
-    // Render the signup page
-    res.render('signup');
-});
-
-module.exports = router;
-=======
 const db = require('../db');
 
 // Serve signup page
@@ -54,4 +45,3 @@ router.post('/signup', (req, res) => {
 });
 
 module.exports = router;
->>>>>>> Marbella's-finished-work
