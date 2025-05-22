@@ -6,9 +6,27 @@ html
         link(href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap", rel="stylesheet")
         link(rel="stylesheet", href="/styles/account-style.css")
         link(rel="stylesheet", href="/styles/navbar-footer-style.css")
+        link(rel="icon", href="/images/logo.png", type="image/png")
         title Account
 
     body
-        include partials/navbar
-        main
-        include partials/footer
+        .page-wrapper
+            include partials/navbar
+            main
+                .account
+                    .account-info
+                        img(src="/images/profile-white.png", alt="Profile Picture")
+                        h2 #{first_name} #{last_name}
+                        p #{email}
+                        button Log Out
+                        button Deactivate Account
+
+                    .past-orders
+                        h2 Past Orders
+                        for order in orders
+                            .order
+                                h3 #{order.product_name}
+                                p #{order.quantity}
+                                p  $#{order.price}
+                                button View Details
+            include partials/footer

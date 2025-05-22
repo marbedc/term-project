@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 const accountRoute = require('./routes/account');
-// const homepageRoute = require('./routes/homepage');
+const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
 const paymentRoute = require('./routes/payment');
 // const productsRoute = require('./routes/products');
@@ -23,8 +23,8 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 
-// //home page
-// app.use('/', homepageRoute);
+//home page
+app.use('/', homepageRoute);
 
 //account page
 app.use('/account', accountRoute);

@@ -1,0 +1,37 @@
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(href="https://fonts.googleapis.com/css2?family=Roboto&display=swap", rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap", rel="stylesheet")
+        link(rel="stylesheet", href="/styles/faq-style.css")
+        link(rel="stylesheet", href="/styles/navbar-footer-style.css")
+        link(rel="icon", href="/images/logo.png", type="image/png")
+        title FAQ
+
+    body
+        .page-wrapper
+            include partials/navbar
+            main
+                .faq
+                    .faq-header
+                        h1 Frequently Asked Questions
+                    .faq-body
+                        .faq-item
+                            h3.star &#11088; 
+                            h3 What is the return policy?
+                        p You can return any item within 30 days of purchase for a full refund.
+                        .faq-item
+                            h3.star &#11088; 
+                            h3 How do I track my order?
+                        p You can track your order using the tracking link sent to your email.
+                        .faq-item
+                            h3.star &#11088; 
+                            h3 What payment methods are accepted?
+                        p We accept all major credit cards, PayPal, and Apple Pay.
+                        .faq-item
+                            h3.star &#11088;
+                            h3 How do I contact customer service?
+                        p You can contact us via email at support@stellar.com.
+                div.bottom-space
+            include partials/footer
