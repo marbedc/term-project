@@ -21,7 +21,7 @@ html
                         .gap
                         form(action='/account/logout', method='POST')
                             button(type="submit") Log Out
-                        form(action='/account/deactivate', method='POST')
+                        form(action='/account/deactivate', method='POST', onsubmit="return confirm('Are you sure you want to deactivate your account? This action cannot be undone.');")
                             button(type="submit") Deactivate Account
 
                     .past-orders
