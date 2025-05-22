@@ -42,8 +42,6 @@ app.get('/', (req, res) => {
   res.redirect('/login');
 });
 
-
-
 //signup page
 app.use('/signup', signupRoute);
 
