@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
     date_of_birth: user.date_of_birth
   };
 
-  res.redirect('/homepage'); //successful login, redirect to homepage
+  res.redirect('/'); //successful login, redirect to homepage
 });
 
 
