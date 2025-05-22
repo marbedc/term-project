@@ -5,6 +5,9 @@ const session = require('express-session');
 const app = express();
 const port = 3000;
 
+// Body parser middleware (for forms)
+app.use(express.urlencoded({ extended: true }));
+
 const accountRoute = require('./routes/account');
 const homepageRoute = require('./routes/homepage');
 const loginRoute = require('./routes/login');
@@ -40,14 +43,38 @@ app.use('/account', accountRoute);
 //login page
 app.use('/login', loginRoute);
 
+app.get('/login', (req, res) => {
+  res.render('login'); // login.pug in /views folder
+});
+
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
+
 //signup page
 app.use('/signup', signupRoute);
+
+app.get('/signup', (req, res) => {
+    res.render('signup');
+  });
+
+  app.get('/', (req, res) => {
+    res.redirect('/signup');
+  });
+
+
+
 
 // //products page
 // app.use('/products', productsRoute);
 
 //payment page
-app.use('/payment', paymentRoute);
+app.use('/', paymentRoute);
+
+//confirmation page
+app.get('/confirmation', (req, res) => {
+  res.render('confirmation');
+});
 
 //faq page
 app.get('/faq', (req, res) => {

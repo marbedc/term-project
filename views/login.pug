@@ -6,30 +6,53 @@ html
     link(href="https://fonts.googleapis.com/css2?family=Roboto&display=swap", rel="stylesheet")
     link(href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap", rel="stylesheet")
     link(rel="stylesheet", href="/styles/login-style.css")
-    title Login
+    link(rel="stylesheet", href="/styles/navbar-footer.css")
+    title Login | Stellar
   body
-    nav.navbar
-      .title
-        span Lorem
-        input#search(type="text", name="search", placeholder="Type Something")
-      ul.nav-links
-        li: a(href="#") Home
-        li: a(href="#") Products
-        li: a(href="#") About
-        li: a(href="#") FAQ
+    //NAVBAR
+    .page-container
+      include partials/navbar
 
-    form.signin-form
-      h1.signin-title Sign in to continue
-      input.form-input(type="text", id="email", name="email", placeholder="Email", required)
-      input.form-input(type="password", id="password", name="password", placeholder="Password", required)
+      form.signin-form(action="/login", method="POST")
+        h1.signin-title Sign in to continue
+        input.form-input(type="text", id="email", name="email", placeholder="Email", required)
+        input.form-input(type="password", id="password", name="password", placeholder="Password", required)
 
-      .label-div
-        label: a(rel="#") Forgot password?
+        // Error Modal - Initially hidden
+        if error
+          .modal(id="errorModal", style="display:block;")
+            .modal-content
+              .modal-header
+                span.close &times;
+                h2 Error
+              .modal-body
+                p= error
+              .modal-footer
+                button(type="button", onclick="closeModal()") Close
 
-      .btn-signIn
-        button Sign In
-        label
-          | Don't have an accout?
-          strong
-            u
-              a(href="/signup")   Sign Up
+        .label-div
+          label: a(rel="#") Forgot password?
+
+        .btn-signIn
+          button Sign In
+          label
+            | Don't have an account?
+            strong
+              u
+                a(href="/signup") Sign Up
+
+      //script to handle the modal close action
+      script.
+        // Close modal function
+        function closeModal() {
+          document.getElementById('errorModal').style.display = 'none';
+        }
+
+        // Safely attach event listener only if the modal exists
+        const closeBtn = document.querySelector('.close');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeModal);
+          }
+
+    //FOOTER
+    include partials/footer
