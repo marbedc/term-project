@@ -13,6 +13,7 @@ const paymentRoute = require('./routes/payment');
 // const productsRoute = require('./routes/products');
 const signupRoute = require('./routes/signup');
 const cartRoute = require('./routes/cart');
+const searchRoute = require('./routes/search');
 
 app.use(express.json());
 
@@ -44,14 +45,6 @@ app.use('/account', accountRoute);
 //login page
 app.use('/login', loginRoute);
 
-app.get('/login', (req, res) => {
-  res.render('login'); // login.pug in /views folder
-});
-
-app.get('/', (req, res) => {
-  res.redirect('/login');
-});
-
 //signup page
 app.use('/signup', signupRoute);
 
@@ -67,7 +60,10 @@ app.use('/signup', signupRoute);
 // app.use('/products', productsRoute);
 
 //payment page
-app.use('/', paymentRoute);
+app.use('/payment', paymentRoute);
+
+//search results page
+app.use('/search', searchRoute);
 
 //confirmation page
 app.get('/confirmation', (req, res) => {

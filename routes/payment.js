@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-router.get('/payment', (req, res) => {
+router.get('/', (req, res) => {
   if (!req.session.user) return res.redirect('/login');
   const userId = req.session.user.id;
 
@@ -48,7 +48,7 @@ router.get('/payment', (req, res) => {
 });
 
 //--------POST--------------------
-router.post('/payment', (req, res) => {
+router.post('/', (req, res) => {
   const userId = req.session.user.id; // Replace with real session ID later
   if (!userId) return res.redirect('/login');
 

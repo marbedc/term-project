@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
         }
 
         // Redirect to homepage after successful signup
-        return res.redirect('/homepage');
+        return res.redirect('/');
       }
     );
   });
